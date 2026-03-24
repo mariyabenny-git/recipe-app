@@ -1,0 +1,237 @@
+[
+  {
+    "id": 1,
+    "title": "Masala Dosa",
+    "title_ml": "മസാല ദോശ",
+    "category": "Breakfast",
+    "description": "A crisp, golden dosa filled with a flavorful spiced potato mixture.",
+    "description_ml": "ക്രിസ്പിയായ ദോശയ്ക്കുള്ളിൽ ഉരുളക്കിഴങ്ങ് മസാല നിറച്ച ദക്ഷിണേന്ത്യൻ വിഭവം",
+    "ingredients": ["Dosa batter", "Potato", "Onion"],
+    "ingredients_ml": ["ദോശ മാവ്", "ഉരുളക്കിഴങ്ങ്", "ഉള്ളി"],
+    "steps": [
+      "Spread batter on hot pan",
+      "Cook until crisp",
+      "Add potato filling",
+      "Fold and serve"
+    ],
+    "steps_ml": [
+      "പാനിൽ മാവ് പരത്തുക",
+      "ക്രിസ്പിയായി വേവിക്കുക",
+      "മസാല ചേർക്കുക",
+      "മടക്കി വിളമ്പുക"
+    ],
+    "tags": ["Breakfast"]
+  },
+
+  {
+    "id": 2,
+    "title": "Vegetable Fried Rice",
+    "title_ml": "വെജിറ്റബിൾ ഫ്രൈഡ് റൈസ്",
+    "category": "Lunch",
+    "description": "Stir-fried rice with vegetables and sauces.",
+    "description_ml": "പച്ചക്കറികളും സോസുകളും ചേർത്ത് തയ്യാറാക്കിയ അരി വിഭവം",
+    "ingredients": ["Rice", "Vegetables", "Soy sauce"],
+    "ingredients_ml": ["അരി", "പച്ചക്കറികൾ", "സോയ സോസ്"],
+    "steps": [
+      "Heat oil",
+      "Add vegetables",
+      "Add rice",
+      "Mix and serve"
+    ],
+    "steps_ml": [
+      "എണ്ണ ചൂടാക്കുക",
+      "പച്ചക്കറികൾ ചേർക്കുക",
+      "അരി ചേർക്കുക",
+      "കലക്കി വിളമ്പുക"
+    ],
+    "tags": ["Lunch"]
+  },
+
+  {
+    "id": 3,
+    "title": "Butter Chicken",
+    "title_ml": "ബട്ടർ ചിക്കൻ",
+    "category": "Dinner",
+    "description": "Creamy chicken cooked in butter and tomato gravy.",
+    "description_ml": "വെണ്ണയും തക്കാളി ഗ്രേവിയും ചേർന്ന ചിക്കൻ കറി",
+    "ingredients": ["Chicken", "Butter", "Tomato"],
+    "ingredients_ml": ["കോഴി", "വെണ്ണ", "തക്കാളി"],
+    "steps": [
+      "Cook chicken",
+      "Prepare gravy",
+      "Mix together",
+      "Serve hot"
+    ],
+    "steps_ml": [
+      "ചിക്കൻ വേവിക്കുക",
+      "ഗ്രേവി തയ്യാറാക്കുക",
+      "കലക്കുക",
+      "ചൂടോടെ വിളമ്പുക"
+    ],
+    "tags": ["Dinner"]
+  },
+
+  {
+    "id": 4,
+    "title": "Chocolate Lava Cake",
+    "title_ml": "ചോക്ലേറ്റ് ലാവ കേക്ക്",
+    "category": "Dessert",
+    "description": "Soft cake with molten chocolate center.",
+    "description_ml": "അകത്ത് ഉരുകിയ ചോക്ലേറ്റ് ഉള്ള കേക്ക്",
+    "ingredients": ["Chocolate", "Butter", "Eggs"],
+    "ingredients_ml": ["ചോക്ലേറ്റ്", "വെണ്ണ", "മുട്ട"],
+    "steps": [
+      "Melt chocolate",
+      "Mix ingredients",
+      "Bake",
+      "Serve warm"
+    ],
+    "steps_ml": [
+      "ചോക്ലേറ്റ് ഉരുക്കുക",
+      "ചേരുവകൾ ചേർക്കുക",
+      "ബേക്ക് ചെയ്യുക",
+      "ചൂടോടെ വിളമ്പുക"
+    ],
+    "tags": ["Dessert"]
+  },
+
+  {
+    "id": 5,
+    "title": "Mango Smoothie",
+    "title_ml": "മാങ്ങ സ്മൂത്തി",
+    "category": "Drinks",
+    "description": "Refreshing mango drink.",
+    "description_ml": "തണുപ്പിക്കുന്ന മാങ്ങ പാനീയം",
+    "ingredients": ["Mango", "Milk", "Sugar"],
+    "ingredients_ml": ["മാങ്ങ", "പാൽ", "പഞ്ചസാര"],
+    "steps": [
+      "Add ingredients to blender",
+      "Blend",
+      "Serve chilled"
+    ],
+    "steps_ml": [
+      "ചേരുവകൾ ചേർക്കുക",
+      "ബ്ലെൻഡ് ചെയ്യുക",
+      "തണുത്ത് വിളമ്പുക"
+    ],
+    "tags": ["Drinks"]
+  },
+
+  {
+    "id": 6,
+    "title": "Fluffy Pancakes",
+    "title_ml": "മൃദുവായ പാൻകേക്ക്",
+    "category": "Breakfast",
+    "description": "Soft and fluffy breakfast pancakes.",
+    "description_ml": "മൃദുവും പൊങ്ങിച്ചിരിക്കുന്ന പാൻകേക്ക്",
+    "ingredients": ["Flour", "Milk", "Eggs"],
+    "ingredients_ml": ["മാവ്", "പാൽ", "മുട്ട"],
+    "steps": [
+      "Prepare batter",
+      "Pour on pan",
+      "Flip and cook",
+      "Serve"
+    ],
+    "steps_ml": [
+      "മാവ് തയ്യാറാക്കുക",
+      "പാനിൽ ഒഴിക്കുക",
+      "മറിക്കുക",
+      "വിളമ്പുക"
+    ],
+    "tags": ["Breakfast"]
+  },
+
+  {
+    "id": 7,
+    "title": "White Sauce Pasta",
+    "title_ml": "വൈറ്റ് സോസ് പാസ്റ്റ",
+    "category": "Main Course",
+    "description": "Creamy pasta with white sauce.",
+    "description_ml": "ക്രീമിയായ സോസിൽ തയ്യാറാക്കിയ പാസ്റ്റ",
+    "ingredients": ["Pasta", "Milk", "Cheese"],
+    "ingredients_ml": ["പാസ്റ്റ", "പാൽ", "ചീസ്"],
+    "steps": [
+      "Boil pasta",
+      "Prepare sauce",
+      "Mix together",
+      "Serve"
+    ],
+    "steps_ml": [
+      "പാസ്റ്റ വേവിക്കുക",
+      "സോസ് തയ്യാറാക്കുക",
+      "കലക്കുക",
+      "വിളമ്പുക"
+    ],
+    "tags": ["Dinner"]
+  },
+
+  {
+    "id": 8,
+    "title": "Dal Tadka",
+    "title_ml": "ദാൽ തഡ്ക",
+    "category": "Lunch",
+    "description": "Lentil curry with spices.",
+    "description_ml": "മസാല ചേർന്ന പരിപ്പ് കറി",
+    "ingredients": ["Lentils", "Spices"],
+    "ingredients_ml": ["പരിപ്പ്", "മസാല"],
+    "steps": [
+      "Cook lentils",
+      "Prepare tempering",
+      "Mix",
+      "Serve"
+    ],
+    "steps_ml": [
+      "പരിപ്പ് വേവിക്കുക",
+      "താളിക്കുക",
+      "കലക്കുക",
+      "വിളമ്പുക"
+    ],
+    "tags": ["Lunch"]
+  },
+
+  {
+    "id": 9,
+    "title": "Vanilla Ice Cream",
+    "title_ml": "വാനില ഐസ് ക്രീം",
+    "category": "Dessert",
+    "description": "Smooth frozen dessert.",
+    "description_ml": "മൃദുവായ തണുത്ത മിഠായി",
+    "ingredients": ["Milk", "Cream", "Sugar"],
+    "ingredients_ml": ["പാൽ", "ക്രീം", "പഞ്ചസാര"],
+    "steps": [
+      "Mix ingredients",
+      "Freeze",
+      "Serve cold"
+    ],
+    "steps_ml": [
+      "ചേരുവകൾ ചേർക്കുക",
+      "ഫ്രീസ് ചെയ്യുക",
+      "തണുത്ത് വിളമ്പുക"
+    ],
+    "tags": ["Dessert"]
+  },
+
+  {
+    "id": 10,
+    "title": "Lemon Juice",
+    "title_ml": "നാരങ്ങ വെള്ളം",
+    "category": "Drinks",
+    "description": "Refreshing citrus drink.",
+    "description_ml": "തണുപ്പിക്കുന്ന നാരങ്ങ പാനീയം",
+    "ingredients": ["Lemon", "Water", "Sugar"],
+    "ingredients_ml": ["നാരങ്ങ", "വെള്ളം", "പഞ്ചസാര"],
+    "steps": [
+      "Squeeze lemon",
+      "Add water",
+      "Mix",
+      "Serve"
+    ],
+    "steps_ml": [
+      "നാരങ്ങ നീര് എടുക്കുക",
+      "വെള്ളം ചേർക്കുക",
+      "കലക്കുക",
+      "വിളമ്പുക"
+    ],
+    "tags": ["Drinks"]
+  }
+]

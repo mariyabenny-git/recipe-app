@@ -1,0 +1,129 @@
+:root {
+  --bg: #0b0f1a;
+  --surface: #121826;
+  --card: #1c2333;
+  --text: #e6edf3;
+  --accent: #ff7a18;
+}
+
+body.light {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --card: #ffffff;
+  --text: #0f172a;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Noto Sans Malayalam', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background: var(--bg);
+}
+
+#search {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* LANGUAGE BUTTON */
+.lang-toggle {
+  position: absolute;
+  top: 15px;
+  right: 70px;
+}
+
+#langBtn {
+  background: var(--surface);
+  color: var(--text);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* FEED */
+.feed {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+/* CARD */
+.recipe {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent),
+              var(--card);
+}
+
+/* ACTIONS */
+.actions {
+  position: absolute;
+  right: 10px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: none;
+  color: var(--text);
+}
+
+/* STEPS */
+.steps {
+  background: var(--surface);
+  padding: 10px;
+  border-radius: 10px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+/* TAG */
+.tag {
+  background: rgba(255,122,24,0.2);
+  color: var(--accent);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.7rem;
+}
+
+/* NAV */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--surface);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+/* DARK TOGGLE */
+.toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culinary OS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="header">
+  <h1>🍳 Culinary OS</h1>
+  <input type="text" id="search" placeholder="Search recipes...">
+
+  <!-- Language Toggle -->
+  <div class="lang-toggle">
+    <button id="langBtn">EN</button>
+  </div>
+</header>
+
+<main id="feed" class="feed"></main>
+
+<nav class="bottom-nav">
+  <button>🏠</button>
+  <button onclick="suggestRecipe()">🧠</button>
+  <button onclick="generateGrocery()">🛒</button>
+  <button onclick="startVoice()">🎤</button>
+</nav>
+
+<div class="toggle">
+  <label>🌙 <input type="checkbox" id="darkToggle"></label>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
