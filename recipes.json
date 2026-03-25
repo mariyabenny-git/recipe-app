@@ -1,122 +1,117 @@
 [
   {
     "name": { "en": "Masala Dosa", "ml": "മസാല ദോശ" },
+    "category": "Breakfast",
     "image": "https://source.unsplash.com/600x400/?dosa",
     "ingredients": {
-      "en": ["Dosa batter", "Potato", "Onion", "Spices"],
-      "ml": ["ദോശ മാവ്", "ഉരുളക്കിഴങ്ങ്", "സവാള", "മസാലകൾ"]
+      "en": ["Dosa batter", "Boiled potatoes", "Onion", "Mustard seeds", "Spices"],
+      "ml": ["ദോശ മാവ്", "ഉരുളക്കിഴങ്ങ്", "സവാള", "കടുക്", "മസാലകൾ"]
     },
     "steps": {
-      "en": ["Prepare masala", "Spread dosa", "Add filling", "Serve hot"],
-      "ml": ["മസാല തയ്യാറാക്കുക", "ദോശ ചുട്ടെടുക്കുക", "മസാല ചേർക്കുക", "ചൂടോടെ നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Idli & Sambar", "ml": "ഇഡ്ലിയും സാംബാറും" },
-    "image": "https://source.unsplash.com/600x400/?idli",
-    "ingredients": {
-      "en": ["Idli batter", "Dal", "Vegetables", "Spices"],
-      "ml": ["ഇഡ്ലി മാവ്", "പരിപ്പ്", "പച്ചക്കറികൾ", "മസാലകൾ"]
-    },
-    "steps": {
-      "en": ["Steam idli", "Cook sambar", "Serve together"],
-      "ml": ["ഇഡ്ലി വേവിക്കുക", "സാംബാർ തയ്യാറാക്കുക", "ഒരുമിച്ച് നൽകുക"]
+      "en": [
+        "Prepare potato masala",
+        "Spread dosa batter on pan",
+        "Add masala inside",
+        "Fold and serve hot"
+      ],
+      "ml": [
+        "ഉരുളക്കിഴങ്ങ് മസാല തയ്യാറാക്കുക",
+        "ദോശ ചുട്ടെടുക്കുക",
+        "മസാല ചേർക്കുക",
+        "മടക്കി ചൂടോടെ നൽകുക"
+      ]
     }
   },
   {
     "name": { "en": "Chicken Biryani", "ml": "ചിക്കൻ ബിരിയാണി" },
+    "category": "Main",
     "image": "https://source.unsplash.com/600x400/?biryani",
     "ingredients": {
-      "en": ["Rice", "Chicken", "Spices", "Onion", "Yogurt"],
-      "ml": ["അരി", "കോഴി", "മസാലകൾ", "സവാള", "തൈര്"]
+      "en": ["Rice", "Chicken", "Yogurt", "Onion", "Spices"],
+      "ml": ["അരി", "കോഴി", "തൈര്", "സവാള", "മസാലകൾ"]
     },
     "steps": {
-      "en": ["Marinate chicken", "Cook rice", "Layer and cook", "Serve"],
-      "ml": ["കോഴി മാരിനേറ്റ് ചെയ്യുക", "അരി വേവിക്കുക", "ലെയർ ചെയ്ത് പാകം ചെയ്യുക", "നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Paneer Butter Masala", "ml": "പനീർ ബട്ടർ മസാല" },
-    "image": "https://source.unsplash.com/600x400/?paneer",
-    "ingredients": {
-      "en": ["Paneer", "Tomato", "Butter", "Cream", "Spices"],
-      "ml": ["പനീർ", "തക്കാളി", "വെണ്ണ", "ക്രീം", "മസാലകൾ"]
-    },
-    "steps": {
-      "en": ["Prepare gravy", "Add paneer", "Cook well", "Serve"],
-      "ml": ["ഗ്രേവി തയ്യാറാക്കുക", "പനീർ ചേർക്കുക", "പാകം ചെയ്യുക", "നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Grilled Chicken", "ml": "ഗ്രിൽ ചെയ്ത കോഴി" },
-    "image": "https://source.unsplash.com/600x400/?grilled-chicken",
-    "ingredients": {
-      "en": ["Chicken", "Salt", "Pepper", "Oil"],
-      "ml": ["കോഴി", "ഉപ്പ്", "മുളക്", "എണ്ണ"]
-    },
-    "steps": {
-      "en": ["Season chicken", "Grill for 20 mins", "Serve hot"],
-      "ml": ["മസാല ചേർക്കുക", "20 മിനിറ്റ് ഗ്രിൽ ചെയ്യുക", "ചൂടോടെ നൽകുക"]
+      "en": [
+        "Marinate chicken with spices",
+        "Cook rice separately",
+        "Layer rice and chicken",
+        "Cook on low flame and serve"
+      ],
+      "ml": [
+        "കോഴി മാരിനേറ്റ് ചെയ്യുക",
+        "അരി വേവിക്കുക",
+        "ലെയർ ചെയ്ത് പാകം ചെയ്യുക",
+        "ചൂടോടെ നൽകുക"
+      ]
     }
   },
   {
     "name": { "en": "Veg Fried Rice", "ml": "വെജ് ഫ്രൈഡ് റൈസ്" },
+    "category": "Main",
     "image": "https://source.unsplash.com/600x400/?fried-rice",
     "ingredients": {
-      "en": ["Rice", "Vegetables", "Soy sauce", "Oil"],
-      "ml": ["അരി", "പച്ചക്കറികൾ", "സോയ സോസ്", "എണ്ണ"]
+      "en": ["Cooked rice", "Mixed vegetables", "Soy sauce", "Garlic", "Oil"],
+      "ml": ["വേവിച്ച അരി", "പച്ചക്കറികൾ", "സോയ സോസ്", "വെളുത്തുള്ളി", "എണ്ണ"]
     },
     "steps": {
-      "en": ["Cook rice", "Stir fry veggies", "Mix together", "Serve"],
-      "ml": ["അരി വേവിക്കുക", "പച്ചക്കറികൾ വറുക്കുക", "ഇണചേർക്കുക", "നൽകുക"]
+      "en": [
+        "Heat oil and sauté garlic",
+        "Add vegetables and fry",
+        "Add rice and mix well",
+        "Add soy sauce and serve"
+      ],
+      "ml": [
+        "എണ്ണ ചൂടാക്കി വെളുത്തുള്ളി വറുക്കുക",
+        "പച്ചക്കറികൾ ചേർക്കുക",
+        "അരി ചേർത്ത് ഇളക്കുക",
+        "സോയ സോസ് ചേർത്ത് നൽകുക"
+      ]
     }
   },
   {
     "name": { "en": "Chocolate Cake", "ml": "ചോക്ലേറ്റ് കേക്ക്" },
+    "category": "Dessert",
     "image": "https://source.unsplash.com/600x400/?chocolate-cake",
     "ingredients": {
-      "en": ["Flour", "Cocoa", "Sugar", "Eggs", "Butter"],
-      "ml": ["മാവ്", "കോക്കോ", "പഞ്ചസാര", "മുട്ട", "വെണ്ണ"]
+      "en": ["Flour", "Cocoa powder", "Sugar", "Eggs", "Butter"],
+      "ml": ["മാവ്", "കോക്കോ പൊടി", "പഞ്ചസാര", "മുട്ട", "വെണ്ണ"]
     },
     "steps": {
-      "en": ["Mix ingredients", "Bake 30 mins", "Cool and serve"],
-      "ml": ["ഇണചേർക്കുക", "30 മിനിറ്റ് വേവിക്കുക", "തണുപ്പിച്ച് നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Gulab Jamun", "ml": "ഗുലാബ് ജാമുൻ" },
-    "image": "https://source.unsplash.com/600x400/?gulab-jamun",
-    "ingredients": {
-      "en": ["Milk powder", "Flour", "Sugar syrup"],
-      "ml": ["പാൽപൊടി", "മാവ്", "പഞ്ചസാര പാനി"]
-    },
-    "steps": {
-      "en": ["Make dough", "Fry balls", "Soak in syrup"],
-      "ml": ["മാവ് ഉണ്ടാക്കുക", "വറുക്കുക", "പാനിയിൽ മുക്കുക"]
+      "en": [
+        "Mix all ingredients",
+        "Pour into baking tray",
+        "Bake for 30 minutes",
+        "Cool and serve"
+      ],
+      "ml": [
+        "എല്ലാം ഇണചേർക്കുക",
+        "ട്രേയിലേക്ക് ഒഴിക്കുക",
+        "30 മിനിറ്റ് വേവിക്കുക",
+        "തണുപ്പിച്ച് നൽകുക"
+      ]
     }
   },
   {
     "name": { "en": "Mango Juice", "ml": "മാങ്ങ ജ്യൂസ്" },
+    "category": "Juice",
     "image": "https://source.unsplash.com/600x400/?mango-juice",
     "ingredients": {
-      "en": ["Mango", "Sugar", "Water"],
-      "ml": ["മാങ്ങ", "പഞ്ചസാര", "വെള്ളം"]
+      "en": ["Ripe mango", "Sugar", "Cold water"],
+      "ml": ["മാങ്ങ", "പഞ്ചസാര", "തണുത്ത വെള്ളം"]
     },
     "steps": {
-      "en": ["Blend mango", "Add sugar", "Serve chilled"],
-      "ml": ["മാങ്ങ അരയ്ക്കുക", "പഞ്ചസാര ചേർക്കുക", "തണുത്ത് നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Lemon Juice", "ml": "നാരങ്ങ ജ്യൂസ്" },
-    "image": "https://source.unsplash.com/600x400/?lemon-juice",
-    "ingredients": {
-      "en": ["Lemon", "Sugar", "Water", "Salt"],
-      "ml": ["നാരങ്ങ", "പഞ്ചസാര", "വെള്ളം", "ഉപ്പ്"]
-    },
-    "steps": {
-      "en": ["Squeeze lemon", "Mix ingredients", "Serve cold"],
-      "ml": ["നാരങ്ങ നീര് പിഴിയുക", "ഇണചേർക്കുക", "തണുത്ത് നൽകുക"]
+      "en": [
+        "Peel and cut mango",
+        "Blend with sugar and water",
+        "Pour into glass",
+        "Serve chilled"
+      ],
+      "ml": [
+        "മാങ്ങ അരിയുക",
+        "പഞ്ചസാരയും വെള്ളവും ചേർത്ത് അരയ്ക്കുക",
+        "ഗ്ലാസിലേക്ക് ഒഴിക്കുക",
+        "തണുത്ത് നൽകുക"
+      ]
     }
   }
 ]
