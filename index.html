@@ -3,49 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ChefMate</title>
+<title>Eco-Chef AI</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="header">
-  <h1>ChefMate</h1>
+  <h1>🌱 Eco-Chef AI</h1>
   <button id="langToggle">🌐</button>
 </header>
 
-<!-- HOME -->
 <section id="home" class="active">
 
-  <div class="hero">
-    <h2>What would you like to cook today? 👩‍🍳</h2>
-    <input type="text" placeholder="Search recipes..." id="search">
+  <!-- SCAN -->
+  <div class="scan-box">
+    <button onclick="scanPantry()">📸 Scan My Fridge</button>
   </div>
 
-  <div class="chips">
-    <button class="chip active">All</button>
-    <button class="chip">Breakfast</button>
-    <button class="chip">Main</button>
-    <button class="chip">Dessert</button>
-    <button class="chip">Juice</button>
+  <!-- QUICK WINS -->
+  <h2>⚡ Quick Wins (15 min)</h2>
+  <div id="quickRecipes" class="card-grid"></div>
+
+  <!-- CATEGORY -->
+  <div class="categories">
+    <div onclick="filterCat('Main')">🍛</div>
+    <div onclick="filterCat('Dessert')">🍰</div>
+    <div onclick="filterCat('Juice')">🥤</div>
   </div>
 
-  <h2>🔥 Trending</h2>
+  <!-- DAILY -->
+  <h2>✨ Daily Inspiration</h2>
   <div id="recipesContainer" class="card-grid"></div>
 
 </section>
 
-<!-- DETAIL -->
 <section id="recipeDetail"></section>
 
-<!-- FAB -->
-<button id="startCooking">🍳</button>
-
-<!-- NAV -->
-<nav class="bottom-nav">
-  <button onclick="showPage('home', this)" class="active">🏠</button>
-  <button onclick="showPage('recipeDetail', this)">📖</button>
-</nav>
+<button id="cookMode">🎤 Cook Mode</button>
 
 <script src="script.js"></script>
 </body>
