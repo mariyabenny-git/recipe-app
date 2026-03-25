@@ -1,158 +1,47 @@
-:root {
-  --primary: #ff6b3d;
-  --glass: rgba(255,255,255,0.08);
-  --radius: 24px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eco-Chef AI</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-* { box-sizing: border-box; }
+<body>
 
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  color: white;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+<header class="header">
+  <h1>🌱 Eco-Chef AI</h1>
+  <button id="langToggle">🌐</button>
+</header>
 
-/* BACKGROUND */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    linear-gradient(rgba(10,10,10,0.7), rgba(10,10,10,0.9)),
-    url("https://source.unsplash.com/1600x900/?food");
-  background-size: cover;
-  background-position: center;
-  filter: blur(6px);
-  z-index: -2;
-}
+<section id="home" class="active">
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, #ff6b3d55, transparent),
-    radial-gradient(circle at 80% 80%, #ffb34733, transparent);
-  z-index: -1;
-}
+  <!-- SCAN -->
+  <div class="scan-box">
+    <button onclick="scanPantry()">📸 Scan My Fridge</button>
+  </div>
 
-/* HEADER */
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px;
-  backdrop-filter: blur(20px);
-  background: rgba(0,0,0,0.4);
-}
+  <!-- QUICK WINS -->
+  <h2>⚡ Quick Wins (15 min)</h2>
+  <div id="quickRecipes" class="card-grid"></div>
 
-/* HERO */
-.hero {
-  padding: 16px;
-}
+  <!-- CATEGORY -->
+  <div class="categories">
+    <div onclick="filterCat('Main')">🍛</div>
+    <div onclick="filterCat('Dessert')">🍰</div>
+    <div onclick="filterCat('Juice')">🥤</div>
+  </div>
 
-.hero input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 14px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
+  <!-- DAILY -->
+  <h2>✨ Daily Inspiration</h2>
+  <div id="recipesContainer" class="card-grid"></div>
 
-/* CHIPS */
-.chips {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 10px;
-}
+</section>
 
-.chip {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: none;
-  background: rgba(255,255,255,0.1);
-  color: white;
-}
+<section id="recipeDetail"></section>
 
-.chip.active {
-  background: var(--primary);
-}
+<button id="cookMode">🎤 Cook Mode</button>
 
-/* CARDS */
-.card-grid {
-  display: grid;
-  gap: 16px;
-  padding: 16px;
-}
-
-.card {
-  position: relative;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.card-content {
-  position: absolute;
-  bottom: 0;
-  padding: 12px;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-}
-
-.heart {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-/* DETAIL */
-#recipeDetail {
-  padding: 16px;
-}
-
-.sticky-title {
-  position: sticky;
-  top: 60px;
-}
-
-/* FAB */
-#startCooking {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  background: var(--primary);
-  border: none;
-  padding: 16px;
-  border-radius: 50%;
-}
-
-/* NAV */
-.bottom-nav {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  display: flex;
-  justify-content: space-around;
-  padding: 12px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.08);
-}
-
-.bottom-nav button.active {
-  color: var(--primary);
-}
-
-/* PAGE */
-section { display: none; }
-section.active { display: block; }
+<script src="script.js"></script>
+</body>
+</html>
