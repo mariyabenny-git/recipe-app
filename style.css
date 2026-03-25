@@ -1,12 +1,18 @@
 :root {
-  --bg: rgba(255,255,255,0.1);
-  --blur: blur(10px);
+  --primary: #ff6b3d;
+  --bg-dark: #0f172a;
+  --glass: rgba(255,255,255,0.08);
+  --radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
   color: white;
 }
 
@@ -14,104 +20,179 @@ body {
 .header {
   display: flex;
   justify-content: space-between;
-  padding: 16px;
-  backdrop-filter: var(--blur);
-  background: var(--bg);
+  align-items: center;
+  padding: 16px 20px;
+  backdrop-filter: blur(20px);
+  background: rgba(0,0,0,0.4);
   position: sticky;
   top: 0;
+  z-index: 10;
+}
+
+.header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* SECTION TITLE */
+h2 {
+  padding: 16px 20px 8px;
+  font-size: 18px;
+  opacity: 0.9;
 }
 
 /* GRID */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
-  padding: 16px;
+  gap: 20px;
+  padding: 0 16px 100px;
 }
 
-/* RECIPE CARD */
+/* CARD */
 .card {
-  border-radius: 24px;
+  position: relative;
+  border-radius: var(--radius);
   overflow: hidden;
-  background: var(--bg);
-  backdrop-filter: var(--blur);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+/* IMAGE */
 .card img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
+  filter: brightness(0.85);
 }
 
+/* OVERLAY TEXT */
 .card-content {
-  padding: 12px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
 }
 
+.card-content h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* HEART */
 .heart {
-  float: right;
-  cursor: pointer;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 20px;
+  background: rgba(0,0,0,0.4);
+  padding: 8px;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
 }
 
 /* CATEGORY GRID */
 .categories {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
   padding: 16px;
 }
 
 .cat-card {
-  padding: 30px;
+  padding: 30px 10px;
   text-align: center;
-  border-radius: 24px;
-  background: var(--bg);
+  border-radius: var(--radius);
+  background: var(--glass);
+  backdrop-filter: blur(15px);
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.cat-card:active {
+  transform: scale(0.95);
 }
 
 /* DETAIL */
 #recipeDetail {
-  padding: 16px;
+  padding: 16px 16px 100px;
 }
 
 .sticky-title {
   position: sticky;
   top: 60px;
-  background: #0f172a;
-  padding: 10px 0;
+  background: var(--bg-dark);
+  padding: 12px 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+/* INGREDIENTS */
+label {
+  display: block;
+  padding: 10px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* STEPS */
+#recipeDetail p {
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 12px;
+  margin: 8px 0;
 }
 
 /* FAB */
 #startCooking {
   position: fixed;
-  bottom: 70px;
+  bottom: 80px;
   right: 20px;
-  padding: 18px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   border: none;
-  font-size: 20px;
-  background: #ff5722;
+  background: var(--primary);
   color: white;
+  font-size: 22px;
+  box-shadow: 0 10px 25px rgba(255,107,61,0.5);
+  transition: transform 0.2s ease;
 }
 
-/* NAV */
+#startCooking:active {
+  transform: scale(0.9);
+}
+
+/* BOTTOM NAV */
 .bottom-nav {
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  border-radius: 30px;
   display: flex;
   justify-content: space-around;
-  background: var(--bg);
-  backdrop-filter: var(--blur);
-  padding: 10px 0;
+  padding: 14px 0;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
 }
 
-button {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 18px;
+.bottom-nav button {
+  font-size: 20px;
+  opacity: 0.7;
 }
 
-/* HIDDEN */
+.bottom-nav button:hover {
+  opacity: 1;
+}
+
+/* PAGE CONTROL */
 section { display: none; }
 section.active { display: block; }
