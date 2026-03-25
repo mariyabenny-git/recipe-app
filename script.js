@@ -1,96 +1,97 @@
 let recipes = [];
 let lang = "en";
-let currentCategory = "All";
+let current = [];
 
 // LOAD
 fetch("recipes.json")
-.then(res => res.json())
+.then(r => r.json())
 .then(data => {
   recipes = data;
-  loadRecipes();
+  loadRecipes(recipes);
+  loadQuick();
 });
 
-// LOAD RECIPES
-function loadRecipes() {
-  const container = document.getElementById("recipesContainer");
-  const search = document.getElementById("search").value.toLowerCase();
+// DISPLAY
+function loadRecipes(data) {
+  const c = document.getElementById("recipesContainer");
+  c.innerHTML = "";
 
-  container.innerHTML = "";
+  data.forEach((r,i)=>{
+    c.innerHTML += `
+      <div class="card" onclick="openRecipe(${i})">
+        <img src="${r.image}">
+        <h3>${r.name[lang]}</h3>
+      </div>
+    `;
+  });
+}
 
-  recipes
-    .filter(r =>
-      (currentCategory === "All" || r.category === currentCategory) &&
-      r.name[lang].toLowerCase().includes(search)
+// QUICK
+function loadQuick() {
+  loadRecipes(recipes.filter(r => r.time <= 15));
+}
+
+// FILTER
+function filterCat(cat){
+  loadRecipes(recipes.filter(r => r.category === cat));
+}
+
+// PANTRY SCAN (SIMULATED AI)
+function scanPantry(){
+  let input = prompt("Enter ingredients you have:");
+  let items = input.toLowerCase().split(",");
+
+  let result = recipes.filter(r =>
+    r.ingredients.en.some(i =>
+      items.some(x => i.toLowerCase().includes(x.trim()))
     )
-    .forEach((r, i) => {
-      container.innerHTML += `
-        <div class="card" onclick="openRecipe(${i})">
-          <img src="${r.image}">
-          <span class="heart" onclick="fav(event)">❤️</span>
-          <div class="card-content">
-            <h3>${r.name[lang]}</h3>
-          </div>
-        </div>
-      `;
-    });
+  );
+
+  loadRecipes(result);
 }
 
-// CATEGORY
-document.querySelectorAll(".chip").forEach(chip => {
-  chip.onclick = () => {
-    document.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
-    chip.classList.add("active");
-    currentCategory = chip.innerText;
-    loadRecipes();
-  };
-});
-
-// SEARCH
-document.getElementById("search").oninput = loadRecipes;
-
-// FAVORITE
-function fav(e) {
-  e.stopPropagation();
-  e.target.classList.toggle("active");
-  navigator.vibrate(50);
-}
-
-// NAV
-function showPage(id, el) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-
-  document.querySelectorAll(".bottom-nav button").forEach(b => b.classList.remove("active"));
-  el.classList.add("active");
-}
-
-// DETAIL
-function openRecipe(i) {
-  const r = recipes[i];
+// DETAIL + SCALING
+function openRecipe(i){
+  let r = recipes[i];
 
   document.getElementById("recipeDetail").innerHTML = `
-    <h2 class="sticky-title">${r.name[lang]}</h2>
+    <h2>${r.name[lang]}</h2>
 
-    <h3>Ingredients</h3>
-    ${r.ingredients[lang].map(i => `<p>☐ ${i}</p>`).join("")}
+    <label>👥 Servings:
+      <input type="range" min="1" max="6" value="2" onchange="scale(${i}, this.value)">
+    </label>
+
+    <div id="ingredients"></div>
 
     <h3>Steps</h3>
     ${r.steps[lang].map((s,i)=> `<p>${i+1}. ${s}</p>`).join("")}
   `;
 
-  showPage("recipeDetail", document.querySelectorAll(".bottom-nav button")[1]);
+  scale(i,2);
+  showPage("recipeDetail");
 }
 
-// LANGUAGE
-document.getElementById("langToggle").onclick = () => {
-  lang = lang === "en" ? "ml" : "en";
-  loadRecipes();
+// SCALE
+function scale(i, n){
+  let r = recipes[i];
+  document.getElementById("ingredients").innerHTML =
+    r.ingredients[lang].map(x=> `<p>${x} x${n}</p>`).join("");
+}
+
+// NAV
+function showPage(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
+
+// VOICE COOK MODE
+document.getElementById("cookMode").onclick = () => {
+  const speech = new SpeechSynthesisUtterance("Cooking mode activated");
+  speechSynthesis.speak(speech);
 };
 
-// SCREEN WAKE
-document.getElementById("startCooking").onclick = async () => {
-  try {
-    await navigator.wakeLock.request("screen");
-    alert("Screen will stay ON while cooking 🍳");
-  } catch {}
+// LANGUAGE
+document.getElementById("langToggle").onclick = ()=>{
+  lang = lang === "en" ? "ml" : "en";
+  loadRecipes(recipes);
 };
