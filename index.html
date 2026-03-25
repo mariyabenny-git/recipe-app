@@ -9,7 +9,6 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <h1>ChefMate</h1>
   <button id="langToggle">🌐</button>
@@ -17,31 +16,35 @@
 
 <!-- HOME -->
 <section id="home" class="active">
-  <h2>Today’s Specials</h2>
-  <div id="recipesContainer" class="card-grid"></div>
-</section>
 
-<!-- CATEGORIES -->
-<section id="categories">
-  <h2>Categories</h2>
-  <div class="categories">
-    <div class="cat-card">Main Course</div>
-    <div class="cat-card">Desserts</div>
-    <div class="cat-card">Juices</div>
-    <div class="cat-card">Breakfast</div>
+  <div class="hero">
+    <h2>What would you like to cook today? 👩‍🍳</h2>
+    <input type="text" placeholder="Search recipes..." id="search">
   </div>
+
+  <div class="chips">
+    <button class="chip active">All</button>
+    <button class="chip">Breakfast</button>
+    <button class="chip">Main</button>
+    <button class="chip">Dessert</button>
+    <button class="chip">Juice</button>
+  </div>
+
+  <h2>🔥 Trending</h2>
+  <div id="recipesContainer" class="card-grid"></div>
+
 </section>
 
-<!-- RECIPE DETAIL -->
+<!-- DETAIL -->
 <section id="recipeDetail"></section>
 
 <!-- FAB -->
 <button id="startCooking">🍳</button>
 
-<!-- BOTTOM NAV -->
+<!-- NAV -->
 <nav class="bottom-nav">
-  <button onclick="showPage('home')">🏠</button>
-  <button onclick="showPage('categories')">📂</button>
+  <button onclick="showPage('home', this)" class="active">🏠</button>
+  <button onclick="showPage('recipeDetail', this)">📖</button>
 </nav>
 
 <script src="script.js"></script>
