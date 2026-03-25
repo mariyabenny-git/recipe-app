@@ -1,150 +1,73 @@
-let currentLang = localStorage.getItem("lang") || "en";
+let recipes = [];
+let lang = "en";
 
-class RecipeController {
-  constructor(data) {
-    this.allRecipes = data;
-    this.filtered = data;
-    this.page = 0;
-    this.limit = 5;
-    this.likes = JSON.parse(localStorage.getItem("likes")) || [];
-  }
+// LOAD DATA
+fetch("recipes.json")
+  .then(res => res.json())
+  .then(data => {
+    recipes = data;
+    loadRecipes();
+  });
 
-  search(query) {
-    this.filtered = this.allRecipes.filter(r =>
-      r.title.toLowerCase().includes(query.toLowerCase())
-    );
-    this.page = 0;
-    this.render();
-  }
+function loadRecipes() {
+  const container = document.getElementById("recipesContainer");
+  container.innerHTML = "";
 
-  toggleLike(id) {
-    if (this.likes.includes(id)) {
-      this.likes = this.likes.filter(l => l !== id);
-    } else {
-      this.likes.push(id);
-    }
-    localStorage.setItem("likes", JSON.stringify(this.likes));
-    this.render();
-  }
-
-  loadMore() {
-    if ((this.page + 1) * this.limit < this.filtered.length) {
-      this.page++;
-      this.render();
-    }
-  }
-
-  render() {
-    const feed = document.getElementById("feed");
-    feed.innerHTML = "";
-
-    const items = this.filtered.slice(0, (this.page + 1) * this.limit);
-
-    items.forEach(recipe => {
-      const liked = this.likes.includes(recipe.id);
-
-      const title = currentLang === "ml" ? recipe.title_ml : recipe.title;
-      const desc = currentLang === "ml" ? recipe.description_ml : recipe.description;
-      const steps = currentLang === "ml" ? recipe.steps_ml : recipe.steps;
-
-      const div = document.createElement("div");
-      div.className = "recipe";
-
-      div.innerHTML = `
-        <div class="actions">
-          <button class="action-btn like-btn" data-id="${recipe.id}">
-            ${liked ? "❤️" : "🤍"}
-          </button>
-          <button class="action-btn" onclick="generateGrocery()">🛒</button>
-          <button class="action-btn" onclick="startVoice()">🎤</button>
+  recipes.forEach((r, i) => {
+    container.innerHTML += `
+      <div class="card" onclick="openRecipe(${i})">
+        <img src="${r.image}">
+        <div class="card-content">
+          <span class="heart" onclick="fav(event)">❤️</span>
+          <h3>${r.name[lang]}</h3>
         </div>
+      </div>
+    `;
+  });
+}
 
-        <h2>${title}</h2>
-        <p>${desc}</p>
+// FAVORITE + HAPTIC
+function fav(e) {
+  e.stopPropagation();
+  navigator.vibrate(50);
+}
 
-        <div class="steps">
-          ${steps.map(step => `
-            <label><input type="checkbox"> ${step}</label>
-          `).join("")}
-        </div>
-      `;
+// NAVIGATION
+function showPage(id) {
+  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+}
 
-      feed.appendChild(div);
-    });
+// DETAIL VIEW
+function openRecipe(i) {
+  const r = recipes[i];
 
-    document.querySelectorAll(".like-btn").forEach(btn => {
-      btn.onclick = () => this.toggleLike(parseInt(btn.dataset.id));
-    });
+  document.getElementById("recipeDetail").innerHTML = `
+    <h2 class="sticky-title">${r.name[lang]}</h2>
+
+    <h3>Ingredients</h3>
+    ${r.ingredients[lang].map(i => `<label><input type="checkbox"> ${i}</label><br>`).join("")}
+
+    <h3>Steps</h3>
+    ${r.steps[lang].map((s,i)=> `<p>${i+1}. ${s}</p>`).join("")}
+  `;
+
+  showPage("recipeDetail");
+}
+
+// LANGUAGE TOGGLE
+document.getElementById("langToggle").onclick = () => {
+  lang = (lang === "en") ? "ml" : "en";
+  loadRecipes();
+};
+
+// KEEP SCREEN ON
+let wakeLock = null;
+document.getElementById("startCooking").onclick = async () => {
+  try {
+    wakeLock = await navigator.wakeLock.request("screen");
+    alert("Screen will stay awake!");
+  } catch (err) {
+    console.log(err);
   }
-}
-
-let controller;
-
-async function init() {
-  const res = await fetch("recipes.json");
-  const data = await res.json();
-  controller = new RecipeController(data);
-  controller.render();
-
-  document.getElementById("langBtn").textContent =
-    currentLang === "en" ? "EN" : "മലയാളം";
-}
-
-/* LANGUAGE TOGGLE */
-document.getElementById("langBtn").addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "ml" : "en";
-  localStorage.setItem("lang", currentLang);
-
-  document.getElementById("langBtn").textContent =
-    currentLang === "en" ? "EN" : "മലയാളം";
-
-  controller.render();
-});
-
-/* SEARCH */
-document.getElementById("search").addEventListener("input", e => {
-  controller.search(e.target.value);
-});
-
-/* SCROLL */
-window.addEventListener("scroll", () => {
-  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
-    controller.loadMore();
-  }
-});
-
-/* DARK MODE */
-document.getElementById("darkToggle").addEventListener("change", () => {
-  document.body.classList.toggle("light");
-});
-
-/* VOICE */
-function startVoice() {
-  if (!('webkitSpeechRecognition' in window)) {
-    alert("Voice not supported");
-    return;
-  }
-  const r = new webkitSpeechRecognition();
-  r.start();
-  r.onresult = e => alert("You said: " + e.results[0][0].transcript);
-}
-
-/* AI SUGGEST */
-function suggestRecipe() {
-  const hour = new Date().getHours();
-  let type = hour < 12 ? "Breakfast" : hour < 18 ? "Lunch" : "Dinner";
-  controller.filtered = controller.allRecipes.filter(r =>
-    r.tags.includes(type)
-  );
-  controller.page = 0;
-  controller.render();
-}
-
-/* GROCERY */
-function generateGrocery() {
-  let items = new Set();
-  controller.filtered.forEach(r => r.ingredients.forEach(i => items.add(i)));
-  alert("🛒 Grocery List:\n\n" + [...items].join("\n"));
-}
-
-init();
+};
