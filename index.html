@@ -3,34 +3,46 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Culinary OS</title>
+<title>ChefMate</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
-  <h1>🍳 Culinary OS</h1>
-  <input type="text" id="search" placeholder="Search recipes...">
-
-  <!-- Language Toggle -->
-  <div class="lang-toggle">
-    <button id="langBtn">EN</button>
-  </div>
+  <h1>ChefMate</h1>
+  <button id="langToggle">🌐</button>
 </header>
 
-<main id="feed" class="feed"></main>
+<!-- HOME -->
+<section id="home" class="active">
+  <h2>Today’s Specials</h2>
+  <div id="recipesContainer" class="card-grid"></div>
+</section>
 
+<!-- CATEGORIES -->
+<section id="categories">
+  <h2>Categories</h2>
+  <div class="categories">
+    <div class="cat-card">Main Course</div>
+    <div class="cat-card">Desserts</div>
+    <div class="cat-card">Juices</div>
+    <div class="cat-card">Breakfast</div>
+  </div>
+</section>
+
+<!-- RECIPE DETAIL -->
+<section id="recipeDetail"></section>
+
+<!-- FAB -->
+<button id="startCooking">🍳</button>
+
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button>🏠</button>
-  <button onclick="suggestRecipe()">🧠</button>
-  <button onclick="generateGrocery()">🛒</button>
-  <button onclick="startVoice()">🎤</button>
+  <button onclick="showPage('home')">🏠</button>
+  <button onclick="showPage('categories')">📂</button>
 </nav>
-
-<div class="toggle">
-  <label>🌙 <input type="checkbox" id="darkToggle"></label>
-</div>
 
 <script src="script.js"></script>
 </body>
