@@ -6,149 +6,163 @@ fetch("recipes.json")
   .then(res => res.json())
   .then(res => {
     data = res;
-    loadRecipes();
+    render(data);
     loadChips();
   });
 
-/* LOAD RECIPES */
-function loadRecipes(filter = "") {
-  let container = document.getElementById("recipes");
+/* 🔥 MAIN RENDER FUNCTION */
+function render(arr) {
+  const container = document.getElementById("recipes");
   container.innerHTML = "";
 
-  let filtered = data.filter(r =>
-    r.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  filtered.forEach(r => {
-    let card = document.createElement("div");
-    card.className = "card";
-
-    card.innerHTML = `
-      <img src="${r.image || ''}" onerror="this.style.display='none'">
-      <div class="heart" onclick="toggleFav('${r.name}', event)">
-        ${favorites.includes(r.name) ? "❤️" : "🤍"}
-      </div>
-      <h4>${r.name}</h4>
-    `;
-
-    card.onclick = () => showRecipe(r.name);
-    container.appendChild(card);
+  arr.forEach(r => {
+    container.appendChild(createCard(r));
   });
 }
 
-/* SHOW RECIPE */
+/* 🔥 SINGLE CARD CREATOR (NO DUPLICATION) */
+function createCard(r) {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    ${r.image ? `<img src="${r.image}">` : ""}
+    
+    <div class="heart" onclick="toggleFav('${r.name}', event)">
+      ${favorites.includes(r.name) ? "❤️" : "🤍"}
+    </div>
+
+    <h4>${r.name}</h4>
+  `;
+
+  card.onclick = () => showRecipe(r.name);
+
+  return card;
+}
+
+/* 🔍 SEARCH */
+document.getElementById("search").addEventListener("input", e => {
+  const value = e.target.value.toLowerCase();
+  render(data.filter(r => r.name.toLowerCase().includes(value)));
+});
+
+/* ❤️ FAVORITES */
+function toggleFav(name, e) {
+  e.stopPropagation();
+
+  if (favorites.includes(name)) {
+    favorites = favorites.filter(f => f !== name);
+  } else {
+    favorites.push(name);
+  }
+
+  localStorage.setItem("fav", JSON.stringify(favorites));
+  render(data);
+}
+
+function showFavorites() {
+  render(data.filter(r => favorites.includes(r.name)));
+}
+
+/* 📂 CATEGORY */
+function loadChips() {
+  const chips = document.getElementById("chips");
+  const categories = [...new Set(data.map(r => r.category))];
+
+  categories.forEach(c => {
+    const btn = document.createElement("button");
+    btn.innerText = c;
+    btn.onclick = () => render(data.filter(r => r.category === c));
+    chips.appendChild(btn);
+  });
+}
+
+/* 📖 SHOW RECIPE */
 function showRecipe(name) {
-  let r = data.find(x => x.name === name);
-  let popup = document.getElementById("popup");
+  const r = data.find(x => x.name === name);
+  const popup = document.getElementById("popup");
 
   history.pushState({}, "");
 
   popup.innerHTML = `
+    <button class="close-btn" onclick="closePopup()">✕</button>
+
+    ${r.image ? `<img src="${r.image}" style="width:100%;border-radius:15px;">` : ""}
+
     <h2>${r.name}</h2>
-    <p>⏱ ${r.time} | 🔥 ${r.calories}</p>
+    <p>⏱ ${r.time || "N/A"} | 🔥 ${r.calories || "N/A"}</p>
 
     <h3>Ingredients</h3>
     <ul>${r.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
 
     <h3>Steps</h3>
     <ol>${r.steps.map(s => `<li>${s}</li>`).join("")}</ol>
-
-    <button onclick="closePopup()">Close</button>
   `;
 
   popup.classList.remove("hidden");
 }
 
-/* CLOSE */
+/* ❌ CLOSE */
 function closePopup() {
   document.getElementById("popup").classList.add("hidden");
 }
 
-/* BACK BUTTON */
+/* 🔙 BACK BUTTON */
 window.onpopstate = () => closePopup();
 
-/* SWIPE */
+/* 📱 SWIPE CLOSE */
 let startY = 0;
-popup = document.getElementById("popup");
+const popup = document.getElementById("popup");
 
 popup.addEventListener("touchstart", e => startY = e.touches[0].clientY);
+
 popup.addEventListener("touchend", e => {
-  if (e.changedTouches[0].clientY - startY > 100) closePopup();
-});
-
-/* FAVORITES */
-function toggleFav(name, e) {
-  e.stopPropagation();
-  if (favorites.includes(name)) {
-    favorites = favorites.filter(f => f !== name);
-  } else {
-    favorites.push(name);
+  if (e.changedTouches[0].clientY - startY > 100) {
+    closePopup();
   }
-  localStorage.setItem("fav", JSON.stringify(favorites));
-  loadRecipes();
-}
-
-function showFavorites() {
-  display(data.filter(r => favorites.includes(r.name)));
-}
-
-/* SEARCH */
-document.getElementById("search").addEventListener("input", e => {
-  loadRecipes(e.target.value);
 });
 
-/* CHIPS */
-function loadChips() {
-  let cats = [...new Set(data.map(r => r.category))];
-  let chips = document.getElementById("chips");
-
-  cats.forEach(c => {
-    let btn = document.createElement("button");
-    btn.innerText = c;
-    btn.onclick = () => display(data.filter(r => r.category === c));
-    chips.appendChild(btn);
-  });
-}
-
-function display(arr) {
-  let container = document.getElementById("recipes");
-  container.innerHTML = "";
-  arr.forEach(r => {
-    let card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `<img src="${r.image}"><h4>${r.name}</h4>`;
-    card.onclick = () => showRecipe(r.name);
-    container.appendChild(card);
-  });
-}
-
-/* MUSIC */
+/* 🎵 MUSIC */
 let playing = true;
+
 function toggleMusic() {
-  let btn = document.querySelector(".music-player button");
+  const btn = document.querySelector(".music-player button");
   playing = !playing;
   btn.innerText = playing ? "⏸" : "▶️";
 }
 
-/* SCANNER UI */
+/* 📷 SCANNER (UI VERSION) */
 function startCamera() {
-  let scanner = document.getElementById("scanner");
+  const scanner = document.getElementById("scanner");
 
   scanner.innerHTML = `
     <h3>Find Recipes</h3>
-    <input id="scanInput" placeholder="Enter ingredient">
-    <button onclick="scanNow()">Search</button>
-    <button onclick="closeScanner()">Cancel</button>
+
+    <input id="scanInput" placeholder="Enter ingredient"
+      style="width:100%;padding:10px;border-radius:10px;border:none;margin-top:10px;">
+
+    <button onclick="scanNow()" 
+      style="margin-top:10px;width:100%;padding:10px;border:none;border-radius:15px;background:#66bb6a;color:white;">
+      Search
+    </button>
+
+    <button onclick="closeScanner()" style="margin-top:10px;width:100%;">
+      Cancel
+    </button>
   `;
 
   scanner.classList.remove("hidden");
 }
 
 function scanNow() {
-  let val = document.getElementById("scanInput").value.toLowerCase();
-  display(data.filter(r =>
-    r.ingredients.join(" ").toLowerCase().includes(val)
-  ));
+  const val = document.getElementById("scanInput").value.toLowerCase();
+
+  render(
+    data.filter(r =>
+      r.ingredients.join(" ").toLowerCase().includes(val)
+    )
+  );
+
   closeScanner();
 }
 
