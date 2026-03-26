@@ -6,11 +6,14 @@
   <title>Eco-Chef AI</title>
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- 🔹 HEADER -->
 <header class="header">
   <div>
     <h3>Hey, Chef 👋</h3>
@@ -18,29 +21,38 @@
   </div>
 </header>
 
+<!-- 🔍 SEARCH -->
 <input type="text" id="search" placeholder="Search recipes...">
 
+<!-- 🍱 CATEGORY -->
 <div id="chips"></div>
 
+<!-- 📷 SCAN -->
 <div class="center">
-  <button onclick="startCamera()" class="scan-btn">📷 Scan Ingredients</button>
+  <button onclick="startCamera()" class="scan-btn">
+    📷 Scan Ingredients
+  </button>
 </div>
 
+<!-- 📦 RECIPES -->
 <main id="recipes" class="grid"></main>
 
+<!-- 📖 POPUPS -->
 <div id="popup" class="popup hidden"></div>
 <div id="scanner" class="popup hidden"></div>
 
-<!-- 🎵 MUSIC -->
+<!-- 🎵 MUSIC PLAYER -->
 <div class="music-player">
-  <span>🎵 Cooking Mode</span>
+  <span>🎵 Relax Cooking Mode</span>
   <button onclick="toggleMusic()">▶️</button>
 </div>
 
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+<!-- 🎧 SOFT MELODY -->
+<audio id="music" loop preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b0c8c.mp3">
 </audio>
 
+<!-- 📱 NAV -->
 <nav class="bottom-nav">
   <button onclick="goHome()">🏠</button>
   <button onclick="document.getElementById('search').focus()">🔍</button>
@@ -48,6 +60,8 @@
   <button onclick="showFavorites()">❤️</button>
 </nav>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>
