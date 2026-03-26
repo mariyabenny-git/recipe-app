@@ -9,11 +9,20 @@
 </head>
 <body>
 
-<header class="header">
-  <div>👋 Hi, Mariya</div>
-  <h2>Eco-Chef AI</h2>
-  <button id="toggleDark">🌙</button>
-</header>
+<header>🌱 Eco-Chef AI</header>
+
+<input type="text" id="search" placeholder="Search recipes...">
+
+<div id="recipes"></div>
+
+<nav>
+  <button onclick="loadRecipes()">🏠</button>
+  <button onclick="showFavorites()">❤️</button>
+</nav>
+
+<script src="script.js"></script>
+</body>
+</head>
 
 <input type="text" id="search" placeholder="Search recipes..." />
 
