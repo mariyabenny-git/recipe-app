@@ -5,49 +5,80 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eco-Chef AI</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- ICONS -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header class="header">
-  <div>
-    <h3>Hey, Chef 👋</h3>
+  <div class="header-text">
+    <h2>👋 Hey, Chef</h2>
     <p class="sub">Smart Cooking Assistant</p>
   </div>
 </header>
 
-<input type="text" id="search" placeholder="Search recipes...">
+<!-- SEARCH -->
+<div class="search-wrapper">
+  <input type="text" id="search" placeholder="Search recipes...">
+</div>
 
-<div id="chips"></div>
+<!-- CATEGORY CHIPS -->
+<div id="chips" class="chips"></div>
 
+<!-- MAIN CONTENT -->
 <main id="recipes" class="grid"></main>
 
-<!-- POPUPS -->
+<!-- POPUP (Recipe Detail) -->
 <div id="popup" class="popup hidden"></div>
+
+<!-- SCANNER (AI Input) -->
 <div id="scanner" class="popup hidden"></div>
 
-<!-- MUSIC -->
+<!-- MUSIC PLAYER -->
 <div class="music-player">
   <span>🎵 Relax Cooking Mode</span>
   <button onclick="toggleMusic()" id="musicBtn">▶️</button>
 </div>
 
+<!-- AUDIO -->
 <audio id="music" loop>
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5d3b8c4d0d.mp3">
 </audio>
 
-<!-- NAV -->
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button onclick="goHome()"><i data-lucide="home"></i></button>
-  <button onclick="document.getElementById('search').focus()"><i data-lucide="search"></i></button>
-  <button onclick="startCamera()"><i data-lucide="camera"></i></button>
-  <button onclick="showFavorites()"><i data-lucide="heart"></i></button>
-</nav>
+  <button onclick="goHome()" class="nav-btn active">
+    <i data-lucide="home"></i>
+  </button>
+
+  <button onclick="document.getElementById('search').focus()" class="nav-btn">
+    <i data-lucide="search"></i>
+  </button>
+
+  <button onclick="startCamera()" class="nav-btn">
+    <i data-lucide="camera"></i>
+  </button>
+
+  <button onclick="showFavorites()" class="nav-btn">
+    <i data-lucide="heart"></i>
+  </button>
 </nav>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
+
+<!-- ICON INIT -->
+<script>
+  lucide.createIcons();
+</script>
+
 </body>
 </html>
