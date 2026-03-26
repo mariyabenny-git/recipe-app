@@ -1,12 +1,62 @@
 [
-  {"name":"Veg Fried Rice","category":"Lunch","image":"https://source.unsplash.com/300x200/?friedrice"},
-  {"name":"Chicken Curry","category":"Dinner","image":"https://source.unsplash.com/300x200/?chickencurry"},
-  {"name":"Pancakes","category":"Breakfast","image":"https://source.unsplash.com/300x200/?pancake"},
-  {"name":"Chocolate Cake","category":"Dessert","image":"https://source.unsplash.com/300x200/?cake"},
-  {"name":"Mango Juice","category":"Drinks","image":"https://source.unsplash.com/300x200/?mangojuice"},
-  {"name":"Omelette","category":"Breakfast","image":"https://source.unsplash.com/300x200/?omelette"},
-  {"name":"Burger","category":"Fast Food","image":"https://source.unsplash.com/300x200/?burger"},
-  {"name":"Pizza","category":"Fast Food","image":"https://source.unsplash.com/300x200/?pizza"},
-  {"name":"Salad","category":"Healthy","image":"https://source.unsplash.com/300x200/?salad"},
-  {"name":"Ice Cream","category":"Dessert","image":"https://source.unsplash.com/300x200/?icecream"}
+  {
+    "name": "Veg Fried Rice",
+    "image": "https://source.unsplash.com/300x200/?friedrice",
+    "ingredients": ["rice","vegetables"],
+    "steps": "Cook rice and mix vegetables."
+  },
+  {
+    "name": "Omelette",
+    "image": "https://source.unsplash.com/300x200/?omelette",
+    "ingredients": ["egg","salt"],
+    "steps": "Beat eggs and cook."
+  },
+  {
+    "name": "Burger",
+    "image": "https://source.unsplash.com/300x200/?burger",
+    "ingredients": ["bread","patty"],
+    "steps": "Assemble and serve."
+  },
+  {
+    "name": "Pizza",
+    "image": "https://source.unsplash.com/300x200/?pizza",
+    "ingredients": ["dough","cheese"],
+    "steps": "Bake and serve."
+  },
+  {
+    "name": "Pancake",
+    "image": "https://source.unsplash.com/300x200/?pancake",
+    "ingredients": ["flour","milk"],
+    "steps": "Mix and cook."
+  },
+  {
+    "name": "Salad",
+    "image": "https://source.unsplash.com/300x200/?salad",
+    "ingredients": ["vegetables"],
+    "steps": "Mix fresh veggies."
+  },
+  {
+    "name": "Ice Cream",
+    "image": "https://source.unsplash.com/300x200/?icecream",
+    "ingredients": ["milk","sugar"],
+    "steps": "Freeze and serve."
+  },
+  {
+    "name": "Chicken Curry",
+    "image": "https://source.unsplash.com/300x200/?chickencurry",
+    "ingredients": ["chicken","spices"],
+    "steps": "Cook with spices."
+  },
+  {
+    "name": "Mango Juice",
+    "image": "https://source.unsplash.com/300x200/?mangojuice",
+    "ingredients": ["mango"],
+    "steps": "Blend and serve."
+  },
+  {
+    "name": "Cake",
+    "image": "https://source.unsplash.com/300x200/?cake",
+    "ingredients": ["flour","sugar"],
+    "steps": "Bake."
+  }
 ]
