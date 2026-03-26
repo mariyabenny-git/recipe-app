@@ -1,13 +1,7 @@
 let data = [];
 let favorites = JSON.parse(localStorage.getItem("fav")) || [];
 
-/* Load theme */
-window.onload = () => {
-  if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light");
-  }
-};
-
+/* LOAD DATA */
 fetch("recipes.json")
   .then(res => res.json())
   .then(res => {
@@ -16,6 +10,7 @@ fetch("recipes.json")
     loadChips();
   });
 
+/* LOAD RECIPES */
 function loadRecipes(filter = "") {
   let container = document.getElementById("recipes");
   container.innerHTML = "";
@@ -29,7 +24,7 @@ function loadRecipes(filter = "") {
     card.className = "card";
 
     card.innerHTML = `
-      <img src="${r.image}" onerror="this.src='https://via.placeholder.com/300x200?text=Food'">
+      <img src="${r.image || ''}" onerror="this.style.display='none'">
       <div class="heart" onclick="toggleFav('${r.name}', event)">
         ${favorites.includes(r.name) ? "❤️" : "🤍"}
       </div>
@@ -41,16 +36,14 @@ function loadRecipes(filter = "") {
   });
 }
 
-/* Recipe popup */
+/* SHOW RECIPE */
 function showRecipe(name) {
   let r = data.find(x => x.name === name);
   let popup = document.getElementById("popup");
 
-  history.pushState({ popup: true }, "");
+  history.pushState({}, "");
 
   popup.innerHTML = `
-    <div style="width:40px;height:5px;background:#888;margin:auto;border-radius:10px;"></div>
-    <img src="${r.image}" style="width:100%;border-radius:15px;">
     <h2>${r.name}</h2>
     <p>⏱ ${r.time} | 🔥 ${r.calories}</p>
 
@@ -64,21 +57,17 @@ function showRecipe(name) {
   `;
 
   popup.classList.remove("hidden");
-  popup.classList.add("active");
 }
 
+/* CLOSE */
 function closePopup() {
-  let popup = document.getElementById("popup");
-  popup.classList.add("hidden");
-  popup.classList.remove("active");
+  document.getElementById("popup").classList.add("hidden");
 }
 
-/* Back button */
-window.onpopstate = () => {
-  closePopup();
-};
+/* BACK BUTTON */
+window.onpopstate = () => closePopup();
 
-/* Swipe */
+/* SWIPE */
 let startY = 0;
 popup = document.getElementById("popup");
 
@@ -87,7 +76,7 @@ popup.addEventListener("touchend", e => {
   if (e.changedTouches[0].clientY - startY > 100) closePopup();
 });
 
-/* Favorites */
+/* FAVORITES */
 function toggleFav(name, e) {
   e.stopPropagation();
   if (favorites.includes(name)) {
@@ -103,12 +92,12 @@ function showFavorites() {
   display(data.filter(r => favorites.includes(r.name)));
 }
 
-/* Search */
+/* SEARCH */
 document.getElementById("search").addEventListener("input", e => {
   loadRecipes(e.target.value);
 });
 
-/* Chips */
+/* CHIPS */
 function loadChips() {
   let cats = [...new Set(data.map(r => r.category))];
   let chips = document.getElementById("chips");
@@ -133,19 +122,36 @@ function display(arr) {
   });
 }
 
-/* Theme */
-function toggleTheme() {
-  document.body.classList.toggle("light");
-  localStorage.setItem("theme",
-    document.body.classList.contains("light") ? "light" : "dark"
-  );
+/* MUSIC */
+let playing = true;
+function toggleMusic() {
+  let btn = document.querySelector(".music-player button");
+  playing = !playing;
+  btn.innerText = playing ? "⏸" : "▶️";
 }
 
-/* Fake AI */
+/* SCANNER UI */
 function startCamera() {
-  let input = prompt("Enter ingredient:");
-  if (!input) return;
+  let scanner = document.getElementById("scanner");
+
+  scanner.innerHTML = `
+    <h3>Find Recipes</h3>
+    <input id="scanInput" placeholder="Enter ingredient">
+    <button onclick="scanNow()">Search</button>
+    <button onclick="closeScanner()">Cancel</button>
+  `;
+
+  scanner.classList.remove("hidden");
+}
+
+function scanNow() {
+  let val = document.getElementById("scanInput").value.toLowerCase();
   display(data.filter(r =>
-    r.ingredients.join(" ").toLowerCase().includes(input.toLowerCase())
+    r.ingredients.join(" ").toLowerCase().includes(val)
   ));
+  closeScanner();
+}
+
+function closeScanner() {
+  document.getElementById("scanner").classList.add("hidden");
 }
