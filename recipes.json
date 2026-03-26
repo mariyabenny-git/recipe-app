@@ -1,72 +1,12 @@
 [
-  {
-    "name": { "en": "Tomato Omelette", "ml": "തക്കാളി ഓംലറ്റ്" },
-    "category": "Main",
-    "time": 10,
-    "image": "https://source.unsplash.com/600x400/?omelette",
-    "ingredients": {
-      "en": ["Egg", "Tomato", "Salt", "Pepper"],
-      "ml": ["മുട്ട", "തക്കാളി", "ഉപ്പ്", "മുളക്"]
-    },
-    "steps": {
-      "en": ["Beat eggs", "Add chopped tomato", "Cook on pan", "Serve hot"],
-      "ml": ["മുട്ട അടിക്കുക", "തക്കാളി ചേർക്കുക", "ചട്ടിയിൽ വേവിക്കുക", "ചൂടോടെ നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Banana Smoothie", "ml": "വാഴപ്പഴ സ്മൂത്തി" },
-    "category": "Juice",
-    "time": 5,
-    "image": "https://source.unsplash.com/600x400/?banana-smoothie",
-    "ingredients": {
-      "en": ["Banana", "Milk", "Sugar"],
-      "ml": ["വാഴപ്പഴം", "പാൽ", "പഞ്ചസാര"]
-    },
-    "steps": {
-      "en": ["Cut banana", "Blend with milk", "Add sugar", "Serve chilled"],
-      "ml": ["വാഴപ്പഴം അരിയുക", "പാലിൽ അരയ്ക്കുക", "പഞ്ചസാര ചേർക്കുക", "തണുത്ത് നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Veg Fried Rice", "ml": "വെജ് ഫ്രൈഡ് റൈസ്" },
-    "category": "Main",
-    "time": 15,
-    "image": "https://source.unsplash.com/600x400/?fried-rice",
-    "ingredients": {
-      "en": ["Cooked rice", "Mixed vegetables", "Soy sauce", "Garlic", "Oil"],
-      "ml": ["വേവിച്ച അരി", "പച്ചക്കറികൾ", "സോയ സോസ്", "വെളുത്തുള്ളി", "എണ്ണ"]
-    },
-    "steps": {
-      "en": ["Heat oil", "Fry garlic", "Add vegetables", "Mix rice and sauce"],
-      "ml": ["എണ്ണ ചൂടാക്കുക", "വെളുത്തുള്ളി വറുക്കുക", "പച്ചക്കറികൾ ചേർക്കുക", "അരി ഇളക്കുക"]
-    }
-  },
-  {
-    "name": { "en": "Chocolate Mug Cake", "ml": "ചോക്ലേറ്റ് മഗ് കേക്ക്" },
-    "category": "Dessert",
-    "time": 5,
-    "image": "https://source.unsplash.com/600x400/?chocolate-cake",
-    "ingredients": {
-      "en": ["Flour", "Cocoa powder", "Sugar", "Milk"],
-      "ml": ["മാവ്", "കോക്കോ പൊടി", "പഞ്ചസാര", "പാൽ"]
-    },
-    "steps": {
-      "en": ["Mix ingredients in mug", "Microwave 2 mins", "Serve warm"],
-      "ml": ["കപ്പിൽ ഇണചേർക്കുക", "2 മിനിറ്റ് മൈക്രോവേവ് ചെയ്യുക", "ചൂടോടെ നൽകുക"]
-    }
-  },
-  {
-    "name": { "en": "Lemon Mint Juice", "ml": "നാരങ്ങ പുടിന ജ്യൂസ്" },
-    "category": "Juice",
-    "time": 5,
-    "image": "https://source.unsplash.com/600x400/?lemon-juice",
-    "ingredients": {
-      "en": ["Lemon", "Mint leaves", "Sugar", "Water"],
-      "ml": ["നാരങ്ങ", "പുടിന ഇല", "പഞ്ചസാര", "വെള്ളം"]
-    },
-    "steps": {
-      "en": ["Squeeze lemon", "Blend with mint", "Add sugar and water", "Serve cold"],
-      "ml": ["നാരങ്ങ നീർ പിഴിയുക", "പുടിനയുമായി അരയ്ക്കുക", "പഞ്ചസാര ചേർക്കുക", "തണുത്ത് നൽകുക"]
-    }
-  }
+  {"name":"Veg Fried Rice","category":"Lunch","image":"https://source.unsplash.com/300x200/?friedrice"},
+  {"name":"Chicken Curry","category":"Dinner","image":"https://source.unsplash.com/300x200/?chickencurry"},
+  {"name":"Pancakes","category":"Breakfast","image":"https://source.unsplash.com/300x200/?pancake"},
+  {"name":"Chocolate Cake","category":"Dessert","image":"https://source.unsplash.com/300x200/?cake"},
+  {"name":"Mango Juice","category":"Drinks","image":"https://source.unsplash.com/300x200/?mangojuice"},
+  {"name":"Omelette","category":"Breakfast","image":"https://source.unsplash.com/300x200/?omelette"},
+  {"name":"Burger","category":"Fast Food","image":"https://source.unsplash.com/300x200/?burger"},
+  {"name":"Pizza","category":"Fast Food","image":"https://source.unsplash.com/300x200/?pizza"},
+  {"name":"Salad","category":"Healthy","image":"https://source.unsplash.com/300x200/?salad"},
+  {"name":"Ice Cream","category":"Dessert","image":"https://source.unsplash.com/300x200/?icecream"}
 ]
