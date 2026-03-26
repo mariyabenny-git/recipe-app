@@ -7,6 +7,7 @@
 
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -40,10 +41,11 @@
 
 <!-- NAV -->
 <nav class="bottom-nav">
-  <button onclick="goHome()">🏠</button>
-  <button onclick="document.getElementById('search').focus()">🔍</button>
-  <button onclick="openScanner()">📷</button>
-  <button onclick="showFavorites()">❤️</button>
+  <button onclick="goHome()"><i data-lucide="home"></i></button>
+  <button onclick="document.getElementById('search').focus()"><i data-lucide="search"></i></button>
+  <button onclick="startCamera()"><i data-lucide="camera"></i></button>
+  <button onclick="showFavorites()"><i data-lucide="heart"></i></button>
+</nav>
 </nav>
 
 <script src="script.js"></script>
