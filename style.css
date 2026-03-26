@@ -7,7 +7,7 @@ body {
 
 /* HEADER */
 .header {
-  padding: 25px 15px 10px;
+  padding: 35px 15px 10px;
 }
 
 .sub {
@@ -22,7 +22,7 @@ body {
   padding: 12px;
   border-radius: 25px;
   border: none;
-  background: #1e1e1e;
+  background: #2a2a2a;
   color: white;
 }
 
@@ -42,21 +42,6 @@ body {
   color: #66bb6a;
 }
 
-/* CENTER */
-.center {
-  text-align: center;
-  margin: 15px;
-}
-
-/* BUTTON */
-.scan-btn {
-  padding: 12px 20px;
-  border-radius: 25px;
-  border: none;
-  background: #66bb6a;
-  color: white;
-}
-
 /* GRID */
 .grid {
   display: grid;
@@ -68,21 +53,18 @@ body {
 
 /* CARD */
 .card {
-  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  position: relative;
+  background: #1e1e1e;
   border-radius: 20px;
   padding: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-.card h4 {
-  font-size: 16px;
 }
 
 /* HEART */
 .heart {
   position: absolute;
-  right: 10px;
-  top: 10px;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
 }
 
 /* POPUP */
@@ -102,14 +84,14 @@ body {
   display: none;
 }
 
-/* CLOSE */
+/* CLOSE BUTTON */
 .close-btn {
   position: absolute;
-  right: 15px;
   top: 15px;
+  left: 15px;
   background: rgba(255,255,255,0.1);
   border-radius: 50%;
-  padding: 8px;
+  padding: 10px;
   border: none;
   color: white;
 }
@@ -125,13 +107,28 @@ body {
   padding: 12px;
 }
 
+.bottom-nav button {
+  background: none;
+  border: none;
+  color: #aaa;
+}
+
+.bottom-nav button.active {
+  color: #66bb6a;
+}
+
+.bottom-nav svg {
+  width: 24px;
+  height: 24px;
+}
+
 /* MUSIC */
 .music-player {
   position: fixed;
   bottom: 70px;
   left: 10px;
   right: 10px;
-  background: linear-gradient(45deg, #1db954, #1ed760);
+  background: #1db954;
   color: black;
   padding: 12px;
   border-radius: 20px;
