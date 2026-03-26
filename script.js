@@ -13,16 +13,20 @@ fetch("recipes.json")
 
 /* LOAD RECIPES */
 function loadRecipes(filter = "") {
-  let container = document.getElementById("recipes");
-  container.innerHTML = "";
+ let card = document.createElement("div");
+card.className = "card";
 
-  data
-    .filter(r => r.name.toLowerCase().includes(filter.toLowerCase()))
-    .forEach(r => {
-      container.innerHTML += `
-        <div class="card" onclick="showRecipe('${r.name}')">
-          <button class="like-btn" onclick="toggleFav('${r.name}', event)">
-          ${favorites.includes(r.name) ? "❤️" : "🤍"}
+card.innerHTML = `
+  <div class="heart" onclick="toggleFav('${r.name}', event)">
+    ${favorites.includes(r.name) ? "❤️" : "🤍"}
+  </div>
+
+  <h4>${r.name || "Recipe"}</h4>
+`;
+
+card.onclick = () => showRecipe(r.name);
+
+container.appendChild(card);
           </button>
           <h4>${r.name}</h4>
         </div>
