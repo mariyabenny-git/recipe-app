@@ -1,6 +1,5 @@
 let data = [];
 let favorites = JSON.parse(localStorage.getItem("fav")) || [];
-let currentLang = "en";
 
 fetch("recipes.json")
   .then(res => res.json())
@@ -24,7 +23,7 @@ function loadRecipes(filter = "") {
 
     card.innerHTML = `
       <img src="${r.image}" 
-           onerror="this.src='https://via.placeholder.com/300x200?text=Food'" />
+        onerror="this.src='https://via.placeholder.com/300x200?text=Food'" />
 
       <div class="heart" onclick="toggleFav('${r.name}', event)">
         ${favorites.includes(r.name) ? "❤️" : "🤍"}
@@ -41,17 +40,20 @@ function loadRecipes(filter = "") {
 
 function showRecipe(name) {
   let r = data.find(x => x.name === name);
+
   let popup = document.getElementById("popup");
 
   popup.innerHTML = `
     <h2>${r.name}</h2>
     <img src="${r.image}" style="width:100%;border-radius:10px;">
-    
+
+    <p>⏱️ ${r.time || "N/A"} | 🔥 ${r.calories || "N/A"}</p>
+
     <h3>Ingredients</h3>
-    <p>${r.ingredients.join(", ")}</p>
-    
+    <ul>${r.ingredients.map(i => `<li>${i}</li>`).join("")}</ul>
+
     <h3>Steps</h3>
-    <p>${r.steps}</p>
+    <ol>${r.steps.map(s => `<li>${s}</li>`).join("")}</ol>
 
     <button onclick="closePopup()">Close</button>
   `;
@@ -80,8 +82,7 @@ function showFavorites() {
   let container = document.getElementById("recipes");
   container.innerHTML = "";
 
-  data
-    .filter(r => favorites.includes(r.name))
+  data.filter(r => favorites.includes(r.name))
     .forEach(r => {
       let card = document.createElement("div");
       card.className = "card";
@@ -92,7 +93,6 @@ function showFavorites() {
       `;
 
       card.onclick = () => showRecipe(r.name);
-
       container.appendChild(card);
     });
 }
@@ -104,8 +104,6 @@ document.getElementById("search").addEventListener("input", (e) => {
 function loadChips() {
   let cats = [...new Set(data.map(r => r.category))];
   let chips = document.getElementById("chips");
-
-  chips.innerHTML = "";
 
   cats.forEach(c => {
     let btn = document.createElement("button");
@@ -134,31 +132,29 @@ function display(arr) {
     `;
 
     card.onclick = () => showRecipe(r.name);
-
     container.appendChild(card);
   });
 }
 
-/* 🌙 DARK MODE */
+/* Fake AI */
+function startCamera() {
+  let input = prompt("Enter ingredient (rice, egg, etc):");
+
+  if (!input) return;
+
+  let results = data.filter(r =>
+    r.ingredients.join(" ").toLowerCase().includes(input.toLowerCase())
+  );
+
+  display(results);
+}
+
+/* Dark mode */
 document.getElementById("toggleDark").onclick = () => {
   document.body.classList.toggle("dark");
 };
 
-/* 🌍 LANGUAGE */
+/* Language */
 function toggleLang() {
-  currentLang = currentLang === "en" ? "ta" : "en";
-  alert(currentLang === "en" ? "English" : "தமிழ்");
-}
-
-/* 📷 CAMERA */
-function startCamera() {
-  let video = document.getElementById("camera");
-
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(stream => {
-      video.srcObject = stream;
-    })
-    .catch(() => {
-      alert("Camera not working");
-    });
+  alert("Language feature demo");
 }
