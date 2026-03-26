@@ -1,71 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eco-Chef AI</title>
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css"/>
-
-  <!-- FONT -->
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- 🔹 HEADER -->
 <header class="header">
   <div>
     <h3>Hey, Chef 👋</h3>
-    <p class="sub">What are we cooking today?</p>
+    <p class="sub">Smart Cooking Assistant</p>
   </div>
 </header>
 
-<!-- 🔍 SEARCH -->
-<input type="text" id="search" placeholder="Search recipes..." />
+<input type="text" id="search" placeholder="Search recipes...">
 
-<!-- 🍱 CATEGORY -->
 <div id="chips"></div>
 
-<!-- 📷 SCANNER BUTTON -->
 <div class="center">
-  <button onclick="startCamera()" class="scan-btn">
-    📷 Scan My Fridge
-  </button>
+  <button onclick="startCamera()" class="scan-btn">📷 Scan Ingredients</button>
 </div>
 
-<!-- 🌟 FEATURED -->
-<section class="featured">
-  <img src="https://source.unsplash.com/600x400/?food" alt="Featured Food">
-  <div class="overlay">25 min • Easy</div>
-</section>
-
-<!-- 📦 RECIPES -->
 <main id="recipes" class="grid"></main>
 
-<!-- 📖 RECIPE POPUP -->
 <div id="popup" class="popup hidden"></div>
-
-<!-- 🔍 SCANNER POPUP -->
 <div id="scanner" class="popup hidden"></div>
 
-<!-- 🎵 MUSIC PLAYER -->
+<!-- 🎵 MUSIC -->
 <div class="music-player">
-  <span>🎵 Cooking Jazz</span>
-  <button onclick="toggleMusic()">⏸</button>
+  <span>🎵 Cooking Mode</span>
+  <button onclick="toggleMusic()">▶️</button>
 </div>
 
-<!-- 📱 BOTTOM NAV -->
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
 <nav class="bottom-nav">
-  <button onclick="loadRecipes()">🏠</button>
+  <button onclick="goHome()">🏠</button>
   <button onclick="document.getElementById('search').focus()">🔍</button>
   <button onclick="startCamera()">📷</button>
   <button onclick="showFavorites()">❤️</button>
 </nav>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
-
 </body>
 </html>
