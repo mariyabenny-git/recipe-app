@@ -1,47 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eco-Chef AI</title>
-<link rel="stylesheet" href="style.css">
-</head>
+:root {
+  --bg: #f5f7f6;
+  --card: #fff;
+  --text: #222;
+  --accent: #7fb77e;
+}
 
-<body>
+body.dark {
+  --bg: #1e1e1e;
+  --card: #2c2c2c;
+  --text: #fff;
+}
 
-<header class="header">
-  <h1>🌱 Eco-Chef AI</h1>
-  <button id="langToggle">🌐</button>
-</header>
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
 
-<section id="home" class="active">
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  font-weight: 600;
+}
 
-  <!-- SCAN -->
-  <div class="scan-box">
-    <button onclick="scanPantry()">📸 Scan My Fridge</button>
-  </div>
+input {
+  width: 90%;
+  margin: 10px auto;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
 
-  <!-- QUICK WINS -->
-  <h2>⚡ Quick Wins (15 min)</h2>
-  <div id="quickRecipes" class="card-grid"></div>
+.chips {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+}
 
-  <!-- CATEGORY -->
-  <div class="categories">
-    <div onclick="filterCat('Main')">🍛</div>
-    <div onclick="filterCat('Dessert')">🍰</div>
-    <div onclick="filterCat('Juice')">🥤</div>
-  </div>
+.chips button {
+  margin-right: 10px;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: var(--accent);
+  color: white;
+}
 
-  <!-- DAILY -->
-  <h2>✨ Daily Inspiration</h2>
-  <div id="recipesContainer" class="card-grid"></div>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
 
-</section>
+.card {
+  background: var(--card);
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.2s;
+}
 
-<section id="recipeDetail"></section>
+.card:hover {
+  transform: scale(1.03);
+}
 
-<button id="cookMode">🎤 Cook Mode</button>
+.card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.card h4 {
+  padding: 5px;
+}
+
+.heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--card);
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
