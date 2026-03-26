@@ -26,12 +26,14 @@
 <input type="text" id="search" placeholder="Search recipes..." />
 
 <!-- CATEGORY CHIPS -->
-<div class="chips" id="chips"></div>
+<div id="chips"></div>
 
-<!-- CAMERA -->
-<div style="text-align:center; margin:10px;">
-  <video id="camera" width="200" autoplay></video><br>
-  <button onclick="startCamera()">📷 Scan My Fridge</button>
+<!-- SCAN BUTTON (clean UI) -->
+<div style="text-align:center; margin:15px;">
+  <button onclick="startCamera()" 
+    style="padding:12px 20px; border:none; border-radius:25px; background:#66bb6a; color:white;">
+    📷 Scan My Fridge
+  </button>
 </div>
 
 <!-- RECIPES -->
@@ -42,9 +44,9 @@
 
 <!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button onclick="loadRecipes()">🏠</button>
-  <button onclick="showFavorites()">❤️</button>
-  <button onclick="startCamera()">📷</button>
+  <button onclick="loadRecipes(); setActive(0)">🏠</button>
+  <button onclick="showFavorites(); setActive(1)">❤️</button>
+  <button onclick="startCamera(); setActive(2)">📷</button>
 </nav>
 
 <!-- SCRIPT -->
