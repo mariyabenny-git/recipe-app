@@ -19,16 +19,16 @@ function loadRecipes(filter = "") {
   );
 
   filtered.forEach(r => {
-    container.innerHTML += `
-      <div class="card" onclick="showRecipe('${r.name}')">
-        <img src="${r.image}">
-        <div class="heart" onclick="toggleFav('${r.name}', event)">
-          ${favorites.includes(r.name) ? "❤️" : "🤍"}
-        </div>
-        <h4>${r.name}</h4>
-      </div>
-    `;
-  });
+    card.innerHTML = `
+  <img src="${r.image}" 
+       onerror="this.src='https://via.placeholder.com/300x200?text=Food'" />
+
+  <div class="heart" onclick="toggleFav('${r.name}', event)">
+    ${favorites.includes(r.name) ? "❤️" : "🤍"}
+  </div>
+
+  <h4>${r.name || "Recipe"}</h4>
+`;);
 }
 
 function showRecipe(name) {
