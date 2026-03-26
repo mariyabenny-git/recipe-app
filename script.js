@@ -65,12 +65,18 @@ window.onpopstate = () => closePopup();
 /* FAVORITES */
 function toggleFav(name, e) {
   e.stopPropagation();
+
   favorites = favorites.includes(name)
     ? favorites.filter(f => f !== name)
     : [...favorites, name];
 
   localStorage.setItem("fav", JSON.stringify(favorites));
   loadRecipes();
+}
+
+/* FAVORITES VIEW */
+function showFavorites() {
+  display(data.filter(r => favorites.includes(r.name)));
 }
 
 /* HOME */
@@ -110,6 +116,39 @@ function display(arr) {
   });
 }
 
+/* SCANNER */
+function startCamera() {
+  let scan = document.getElementById("scanner");
+
+  scan.innerHTML = `
+    <button class="close-btn" onclick="closeScanner()">←</button>
+    <h3>Enter Ingredients</h3>
+    <input id="scanInput">
+    <button onclick="scanSearch()">Find</button>
+  `;
+
+  scan.classList.remove("hidden");
+}
+
+function closeScanner() {
+  document.getElementById("scanner").classList.add("hidden");
+}
+
+function scanSearch() {
+  let val = document.getElementById("scanInput").value.toLowerCase();
+
+  if (!val) return closeScanner();
+
+  let result = data.filter(r =>
+    val.split(" ").some(i =>
+      r.ingredients.join(" ").toLowerCase().includes(i)
+    )
+  );
+
+  display(result);
+  closeScanner();
+}
+
 /* TIMER */
 let timer, seconds = 0;
 
@@ -147,17 +186,3 @@ function toggleMusic() {
     btn.innerText = "▶️";
   }
 }
-
-/* DRAG MUSIC BAR */
-let bar = document.getElementById("musicBar");
-let isDrag = false;
-
-bar.addEventListener("mousedown", () => isDrag = true);
-document.addEventListener("mouseup", () => isDrag = false);
-
-document.addEventListener("mousemove", e => {
-  if (!isDrag) return;
-
-  bar.style.left = e.clientX - 100 + "px";
-  bar.style.top = e.clientY - 20 + "px";
-});
