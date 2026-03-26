@@ -12,9 +12,12 @@
 <body>
 
 <header class="header">
-  <h2>🌱 Eco-Chef AI</h2>
   <div>
-    <button id="toggleDark">🌙</button>
+    <h3>Hey, CHEF👋</h3>
+    <p class="sub">What are we cooking today?</p>
+  </div>
+  <div>
+    <button>⚙️</button>
     <button onclick="toggleLang()">🌍</button>
   </div>
 </header>
@@ -28,18 +31,26 @@
     📷 Scan My Fridge
   </button>
 </div>
-
+<div class="featured">
+  <img src="https://source.unsplash.com/600x400/?pizza">
+  <div class="overlay">
+    <p>25 min • Easy</p>
+  </div>
+</div>
 <div id="recipes" class="grid"></div>
 
 <div id="popup" class="popup hidden"></div>
 
 <nav class="bottom-nav">
-  <button onclick="loadRecipes()">🏠</button>
-  <button onclick="showFavorites()">❤️</button>
-  <button onclick="startCamera()">📷</button>
+  <button>🏠</button>
+  <button>🔍</button>
+  <button>📷</button>
+  <button>❤️</button>
 </nav>
 
 <script src="script.js"></script>
-
+<div class="music-player">
+  🎵 Cooking Jazz - Playing...
+</div>
 </body>
 </html>
