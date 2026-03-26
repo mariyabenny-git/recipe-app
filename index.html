@@ -11,51 +11,35 @@
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <div>
     <h3>Hey, Chef 👋</h3>
     <p class="sub">What are we cooking today?</p>
   </div>
-  <div>
-    <button>⚙️</button>
-    <button onclick="toggleLang()">🌍</button>
-  </div>
+  <button onclick="toggleTheme()">⚙️</button>
 </header>
 
-<!-- SEARCH -->
 <input type="text" id="search" placeholder="Search recipes..." />
 
-<!-- CATEGORY -->
 <div id="chips"></div>
 
-<!-- SCAN BUTTON -->
 <div style="text-align:center; margin:15px;">
   <button onclick="startCamera()" class="scan-btn">
     📷 Scan My Fridge
   </button>
 </div>
 
-<!-- FEATURED -->
 <div class="featured">
   <img src="https://source.unsplash.com/600x400/?pizza">
-  <div class="overlay">
-    <p>25 min • Easy</p>
-  </div>
+  <div class="overlay">25 min • Easy</div>
 </div>
 
-<!-- RECIPES -->
 <div id="recipes" class="grid"></div>
 
-<!-- POPUP -->
 <div id="popup" class="popup hidden"></div>
 
-<!-- MUSIC PLAYER -->
-<div class="music-player">
-  🎵 Cooking Jazz - Playing...
-</div>
+<div class="music-player">🎵 Cooking Jazz - Playing...</div>
 
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <button onclick="loadRecipes()">🏠</button>
   <button onclick="document.getElementById('search').focus()">🔍</button>
@@ -63,7 +47,6 @@
   <button onclick="showFavorites()">❤️</button>
 </nav>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>
