@@ -4,38 +4,51 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Eco-Chef AI</title>
+
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<header>🌱 Eco-Chef AI</header>
+<!-- HEADER -->
+<header class="header">
+  <h2>🌱 Eco-Chef AI</h2>
+  <div>
+    <button id="toggleDark">🌙</button>
+    <button onclick="toggleLang()">🌍</button>
+  </div>
+</header>
 
-<input type="text" id="search" placeholder="Search recipes...">
-
-<div id="recipes"></div>
-
-<nav>
-  <button onclick="loadRecipes()">🏠</button>
-  <button onclick="showFavorites()">❤️</button>
-</nav>
-
-<script src="script.js"></script>
-</body>
-</head>
-
+<!-- SEARCH -->
 <input type="text" id="search" placeholder="Search recipes..." />
 
+<!-- CATEGORY CHIPS -->
 <div class="chips" id="chips"></div>
 
+<!-- CAMERA -->
+<div style="text-align:center; margin:10px;">
+  <video id="camera" width="200" autoplay></video><br>
+  <button onclick="startCamera()">📷 Scan My Fridge</button>
+</div>
+
+<!-- RECIPES -->
 <div id="recipes" class="grid"></div>
 
+<!-- POPUP -->
+<div id="popup" class="popup hidden"></div>
+
+<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
   <button onclick="loadRecipes()">🏠</button>
   <button onclick="showFavorites()">❤️</button>
-  <button onclick="alert('Scan Coming Soon')">📷</button>
+  <button onclick="startCamera()">📷</button>
 </nav>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
+
 </body>
 </html>
