@@ -2,13 +2,14 @@ let data = [];
 let favorites = JSON.parse(localStorage.getItem("fav")) || [];
 let isPlaying = false;
 
-/* LOAD DATA */
+/* LOAD */
 fetch("recipes.json")
   .then(res => res.json())
   .then(res => {
     data = res;
     loadRecipes();
     loadChips();
+    lucide.createIcons();
   });
 
 /* LOAD RECIPES */
@@ -32,7 +33,6 @@ function loadRecipes(filter = "") {
     `;
 
     card.onclick = () => showRecipe(r.name);
-
     container.appendChild(card);
   });
 }
@@ -53,12 +53,11 @@ function showRecipe(name) {
   history.pushState({ page: "recipe" }, "");
 }
 
-/* CLOSE POPUP */
+/* CLOSE */
 function closePopup() {
   document.getElementById("popup").classList.add("hidden");
 }
 
-/* MOBILE BACK BUTTON */
 window.onpopstate = () => closePopup();
 
 /* FAVORITES */
@@ -75,13 +74,12 @@ function toggleFav(name, e) {
   loadRecipes();
 }
 
-/* SHOW FAVORITES */
+/* FAVORITES VIEW */
 function showFavorites() {
   let container = document.getElementById("recipes");
   container.innerHTML = "";
 
-  data
-    .filter(r => favorites.includes(r.name))
+  data.filter(r => favorites.includes(r.name))
     .forEach(r => {
       container.innerHTML += `
         <div class="card" onclick="showRecipe('${r.name}')">
@@ -102,10 +100,11 @@ document.getElementById("search").addEventListener("input", e => {
   loadRecipes(e.target.value);
 });
 
-/* CATEGORY CHIPS */
+/* CHIPS */
 function loadChips() {
   let cats = [...new Set(data.map(r => r.category))];
   let chips = document.getElementById("chips");
+
   chips.innerHTML = "";
 
   cats.forEach(c => {
@@ -134,14 +133,14 @@ function display(arr) {
   });
 }
 
-/* SCANNER (SIMPLE AI SEARCH) */
+/* SCANNER */
 function startCamera() {
   let scan = document.getElementById("scanner");
 
   scan.innerHTML = `
     <button class="close-btn" onclick="closeScanner()">←</button>
     <h3>Enter Ingredients</h3>
-    <input id="scanInput" placeholder="e.g rice egg milk">
+    <input id="scanInput" placeholder="rice egg milk">
     <button onclick="scanSearch()">Find Recipes</button>
   `;
 
@@ -149,12 +148,10 @@ function startCamera() {
 }
 
 function closeScanner() {
-  let scan = document.getElementById("scanner");
-  scan.classList.add("hidden");
-  scan.innerHTML = "";
+  document.getElementById("scanner").classList.add("hidden");
 }
 
-/* SMART MATCH */
+/* AI MATCH */
 function scanSearch() {
   let val = document.getElementById("scanInput").value.toLowerCase();
 
@@ -165,13 +162,11 @@ function scanSearch() {
 
   let inputs = val.split(" ");
 
-  let result = data.filter(r => {
-    let ingredients = r.ingredients.map(i => i.toLowerCase());
-
-    return inputs.some(input =>
-      ingredients.some(i => i.includes(input))
-    );
-  });
+  let result = data.filter(r =>
+    inputs.some(input =>
+      r.ingredients.join(" ").toLowerCase().includes(input)
+    )
+  );
 
   display(result);
   closeScanner();
@@ -184,18 +179,14 @@ function toggleMusic() {
 
   if (!isPlaying) {
     audio.play().then(() => {
-      btn.innerText = "⏸️";
       isPlaying = true;
+      btn.innerText = "⏸️";
+    }).catch(() => {
+      alert("Tap again to enable sound 🔊");
     });
   } else {
     audio.pause();
-    btn.innerText = "▶️";
     isPlaying = false;
+    btn.innerText = "▶️";
   }
 }
-
-/* ENABLE MUSIC (USER INTERACTION FIX) */
-document.body.addEventListener("click", () => {
-  const audio = document.getElementById("music");
-  if (!isPlaying) audio.play().catch(() => {});
-}, { once: true });
