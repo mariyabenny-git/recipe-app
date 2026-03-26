@@ -43,7 +43,7 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
   padding: 12px;
-  padding-bottom: 260px;
+  padding-bottom: 200px;
 }
 
 /* CARD */
@@ -72,7 +72,7 @@ body {
   border-radius: 25px 25px 0 0;
   max-height: 80%;
   overflow-y: auto;
-  padding-bottom: 260px;
+  padding-bottom: 200px;
 }
 
 /* CLOSE */
@@ -101,7 +101,7 @@ body {
 /* TIMER */
 .timer-box {
   position: fixed;
-  bottom: 160px;
+  bottom: 140px;
   left: 10px;
   right: 10px;
   background: #1e1e1e;
@@ -111,20 +111,17 @@ body {
   justify-content: space-around;
 }
 
-/* FLOATING MUSIC */
+/* MUSIC */
 .music-player {
   position: fixed;
-  bottom: 90px;
-  left: 20px;
-  width: 200px;
+  bottom: 80px;
+  left: 10px;
+  right: 10px;
   background: rgba(29,185,84,0.9);
-  backdrop-filter: blur(10px);
   border-radius: 20px;
-  padding: 10px;
+  padding: 12px;
   display: flex;
   justify-content: space-between;
-  cursor: grab;
-  z-index: 1000;
 }
 
 /* HIDE */
