@@ -10,12 +10,22 @@ fetch("recipes.json")
   data = res;
   render(data);
   loadChips();
+  lucide.createIcons(); // 🔥 ICON INIT
 });
 
-/* HOME */
+/* HOME FIX */
 function goHome() {
   closePopup();
+  document.getElementById("search").value = "";
   render(data);
+}
+
+/* ACTIVE NAV */
+function setActive(id) {
+  document.querySelectorAll(".bottom-nav button")
+    .forEach(btn => btn.classList.remove("active"));
+
+  document.getElementById(id)?.classList.add("active");
 }
 
 /* RENDER */
@@ -49,6 +59,7 @@ document.getElementById("search").addEventListener("input", e => {
 /* FAVORITES */
 function toggleFav(name, e) {
   e.stopPropagation();
+
   if (favorites.includes(name))
     favorites = favorites.filter(f => f !== name);
   else
@@ -58,6 +69,7 @@ function toggleFav(name, e) {
   render(data);
 }
 
+/* SHOW FAVORITES */
 function showFavorites() {
   render(data.filter(r => favorites.includes(r.name)));
 }
@@ -83,7 +95,7 @@ function showRecipe(name) {
   history.pushState({}, "");
 
   popup.innerHTML = `
-    <button class="close-btn" onclick="closePopup()">✕</button>
+    <button class="close-btn" onclick="closePopup()">←</button>
     <h2>${r.name}</h2>
 
     <h3>Ingredients</h3>
@@ -102,13 +114,6 @@ function closePopup() {
 
 window.onpopstate = closePopup;
 
-/* SWIPE */
-let startX = 0;
-popup.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-popup.addEventListener("touchend", e => {
-  if (Math.abs(e.changedTouches[0].clientX - startX) > 50) closePopup();
-});
-
 /* MUSIC */
 function toggleMusic() {
   let btn = document.querySelector(".music-player button");
@@ -117,6 +122,7 @@ function toggleMusic() {
     music.pause();
     btn.innerText = "▶️";
   } else {
+    music.volume = 0.3;
     music.play();
     btn.innerText = "⏸";
   }
@@ -124,7 +130,7 @@ function toggleMusic() {
   playing = !playing;
 }
 
-/* SCANNER (simple) */
+/* SCANNER */
 function startCamera() {
   let scanner = document.getElementById("scanner");
 
