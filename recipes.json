@@ -1,62 +1,191 @@
 [
   {
-    "name": "Veg Fried Rice",
-    "image": "https://source.unsplash.com/300x200/?friedrice",
-    "ingredients": ["rice","vegetables"],
-    "steps": "Cook rice and mix vegetables."
-  },
-  {
-    "name": "Omelette",
-    "image": "https://source.unsplash.com/300x200/?omelette",
-    "ingredients": ["egg","salt"],
-    "steps": "Beat eggs and cook."
-  },
-  {
-    "name": "Burger",
-    "image": "https://source.unsplash.com/300x200/?burger",
-    "ingredients": ["bread","patty"],
-    "steps": "Assemble and serve."
-  },
-  {
     "name": "Pizza",
+    "category": "Main",
     "image": "https://source.unsplash.com/300x200/?pizza",
-    "ingredients": ["dough","cheese"],
-    "steps": "Bake and serve."
+    "ingredients": [
+      "200g Pizza Dough",
+      "100g Mozzarella Cheese",
+      "3 tbsp Tomato Sauce",
+      "1 tsp Olive Oil"
+    ],
+    "steps": [
+      "Preheat oven to 200°C",
+      "Roll the dough into a flat base",
+      "Spread tomato sauce evenly",
+      "Add cheese and toppings",
+      "Bake for 15 minutes"
+    ],
+    "time": "15 min",
+    "calories": "350 kcal"
   },
   {
-    "name": "Pancake",
-    "image": "https://source.unsplash.com/300x200/?pancake",
-    "ingredients": ["flour","milk"],
-    "steps": "Mix and cook."
-  },
-  {
-    "name": "Salad",
-    "image": "https://source.unsplash.com/300x200/?salad",
-    "ingredients": ["vegetables"],
-    "steps": "Mix fresh veggies."
-  },
-  {
-    "name": "Ice Cream",
-    "image": "https://source.unsplash.com/300x200/?icecream",
-    "ingredients": ["milk","sugar"],
-    "steps": "Freeze and serve."
+    "name": "Veg Fried Rice",
+    "category": "Main",
+    "image": "https://source.unsplash.com/300x200/?friedrice",
+    "ingredients": [
+      "1 cup Cooked Rice",
+      "1/2 cup Mixed Vegetables",
+      "2 tbsp Soy Sauce",
+      "1 tbsp Oil"
+    ],
+    "steps": [
+      "Heat oil in a pan",
+      "Add vegetables and stir fry",
+      "Add cooked rice",
+      "Mix soy sauce and cook for 5 mins"
+    ],
+    "time": "20 min",
+    "calories": "250 kcal"
   },
   {
     "name": "Chicken Curry",
+    "category": "Main",
     "image": "https://source.unsplash.com/300x200/?chickencurry",
-    "ingredients": ["chicken","spices"],
-    "steps": "Cook with spices."
+    "ingredients": [
+      "250g Chicken",
+      "1 Onion",
+      "2 Tomatoes",
+      "Spices"
+    ],
+    "steps": [
+      "Heat oil and fry onions",
+      "Add tomatoes and spices",
+      "Add chicken and cook",
+      "Simmer for 20 minutes"
+    ],
+    "time": "30 min",
+    "calories": "400 kcal"
+  },
+  {
+    "name": "Omelette",
+    "category": "Breakfast",
+    "image": "https://source.unsplash.com/300x200/?omelette",
+    "ingredients": [
+      "2 Eggs",
+      "Salt",
+      "Pepper",
+      "1 tsp Oil"
+    ],
+    "steps": [
+      "Beat eggs in a bowl",
+      "Heat oil in pan",
+      "Pour eggs and cook",
+      "Flip and cook both sides"
+    ],
+    "time": "10 min",
+    "calories": "150 kcal"
+  },
+  {
+    "name": "Pancake",
+    "category": "Breakfast",
+    "image": "https://source.unsplash.com/300x200/?pancake",
+    "ingredients": [
+      "1 cup Flour",
+      "1 cup Milk",
+      "1 Egg",
+      "2 tbsp Sugar"
+    ],
+    "steps": [
+      "Mix all ingredients",
+      "Heat pan",
+      "Pour batter",
+      "Cook both sides"
+    ],
+    "time": "15 min",
+    "calories": "300 kcal"
+  },
+  {
+    "name": "Chocolate Cake",
+    "category": "Dessert",
+    "image": "https://source.unsplash.com/300x200/?chocolatecake",
+    "ingredients": [
+      "1 cup Flour",
+      "1/2 cup Cocoa Powder",
+      "1 cup Sugar",
+      "2 Eggs"
+    ],
+    "steps": [
+      "Mix dry ingredients",
+      "Add eggs and mix",
+      "Pour into pan",
+      "Bake for 30 mins"
+    ],
+    "time": "30 min",
+    "calories": "450 kcal"
+  },
+  {
+    "name": "Fruit Salad",
+    "category": "Dessert",
+    "image": "https://source.unsplash.com/300x200/?fruitsalad",
+    "ingredients": [
+      "Apple",
+      "Banana",
+      "Mango",
+      "Orange"
+    ],
+    "steps": [
+      "Chop all fruits",
+      "Mix in bowl",
+      "Serve fresh"
+    ],
+    "time": "10 min",
+    "calories": "120 kcal"
   },
   {
     "name": "Mango Juice",
+    "category": "Drinks",
     "image": "https://source.unsplash.com/300x200/?mangojuice",
-    "ingredients": ["mango"],
-    "steps": "Blend and serve."
+    "ingredients": [
+      "1 Mango",
+      "1 cup Milk",
+      "2 tbsp Sugar"
+    ],
+    "steps": [
+      "Peel mango",
+      "Add to blender",
+      "Add milk and sugar",
+      "Blend and serve"
+    ],
+    "time": "5 min",
+    "calories": "180 kcal"
   },
   {
-    "name": "Cake",
-    "image": "https://source.unsplash.com/300x200/?cake",
-    "ingredients": ["flour","sugar"],
-    "steps": "Bake."
+    "name": "Veg Salad",
+    "category": "Healthy",
+    "image": "https://source.unsplash.com/300x200/?salad",
+    "ingredients": [
+      "Cucumber",
+      "Tomato",
+      "Carrot",
+      "Lemon Juice"
+    ],
+    "steps": [
+      "Chop vegetables",
+      "Mix in bowl",
+      "Add lemon juice",
+      "Serve fresh"
+    ],
+    "time": "10 min",
+    "calories": "100 kcal"
+  },
+  {
+    "name": "Burger",
+    "category": "Fast Food",
+    "image": "https://source.unsplash.com/300x200/?burger",
+    "ingredients": [
+      "Burger Bun",
+      "Veg/Chicken Patty",
+      "Cheese Slice",
+      "Sauce"
+    ],
+    "steps": [
+      "Toast bun",
+      "Cook patty",
+      "Assemble burger",
+      "Serve hot"
+    ],
+    "time": "15 min",
+    "calories": "500 kcal"
   }
 ]
