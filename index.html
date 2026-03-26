@@ -10,7 +10,7 @@
   <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- 🔥 PREMIUM ICONS -->
+  <!-- ICONS -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
@@ -27,18 +27,13 @@
 
 <div id="chips"></div>
 
-<div class="center">
-  <button onclick="startCamera()" class="scan-btn">
-    Scan Ingredients
-  </button>
-</div>
-
 <main id="recipes" class="grid"></main>
 
+<!-- POPUPS -->
 <div id="popup" class="popup hidden"></div>
 <div id="scanner" class="popup hidden"></div>
 
-<!-- 🎵 MUSIC -->
+<!-- MUSIC -->
 <div class="music-player">
   <span>🎵 Relax Mode</span>
   <button onclick="toggleMusic()">▶️</button>
@@ -48,7 +43,7 @@
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b0c8c.mp3">
 </audio>
 
-<!-- 🔥 NAV -->
+<!-- NAV -->
 <nav class="bottom-nav">
   <button onclick="goHome(); setActive('homeBtn')" id="homeBtn">
     <i data-lucide="home"></i>
@@ -68,6 +63,5 @@
 </nav>
 
 <script src="script.js"></script>
-
 </body>
 </html>
