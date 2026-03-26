@@ -22,8 +22,7 @@ function loadRecipes(filter = "") {
       container.innerHTML += `
         <div class="card" onclick="showRecipe('${r.name}')">
           <button class="like-btn" onclick="toggleFav('${r.name}', event)">
-           <button class="like-btn" onclick="toggleFav('${r.name}', event)">
-           <i data-lucide="heart" class="${favorites.includes(r.name) ? 'liked' : ''}"></i>
+          ${favorites.includes(r.name) ? "❤️" : "🤍"}
           </button>
           <h4>${r.name}</h4>
         </div>
