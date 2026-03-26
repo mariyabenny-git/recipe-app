@@ -6,14 +6,11 @@
   <title>Eco-Chef AI</title>
 
   <link rel="stylesheet" href="style.css"/>
-
-  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header class="header">
   <h2>🌱 Eco-Chef AI</h2>
   <div>
@@ -22,34 +19,26 @@
   </div>
 </header>
 
-<!-- SEARCH -->
 <input type="text" id="search" placeholder="Search recipes..." />
 
-<!-- CATEGORY CHIPS -->
 <div id="chips"></div>
 
-<!-- SCAN BUTTON (clean UI) -->
 <div style="text-align:center; margin:15px;">
-  <button onclick="startCamera()" 
-    style="padding:12px 20px; border:none; border-radius:25px; background:#66bb6a; color:white;">
+  <button onclick="startCamera()" class="scan-btn">
     📷 Scan My Fridge
   </button>
 </div>
 
-<!-- RECIPES -->
 <div id="recipes" class="grid"></div>
 
-<!-- POPUP -->
 <div id="popup" class="popup hidden"></div>
 
-<!-- BOTTOM NAV -->
 <nav class="bottom-nav">
-  <button onclick="loadRecipes(); setActive(0)">🏠</button>
-  <button onclick="showFavorites(); setActive(1)">❤️</button>
-  <button onclick="startCamera(); setActive(2)">📷</button>
+  <button onclick="loadRecipes()">🏠</button>
+  <button onclick="showFavorites()">❤️</button>
+  <button onclick="startCamera()">📷</button>
 </nav>
 
-<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>
