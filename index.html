@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Eco-Chef AI</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css"/>
+
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+<!-- 🔹 HEADER -->
 <header class="header">
   <div>
     <h3>Hey, Chef 👋</h3>
@@ -18,35 +22,41 @@
   </div>
 </header>
 
+<!-- 🔍 SEARCH -->
 <input type="text" id="search" placeholder="Search recipes..." />
 
+<!-- 🍱 CATEGORY -->
 <div id="chips"></div>
 
-<div style="text-align:center; margin:15px;">
+<!-- 📷 SCANNER BUTTON -->
+<div class="center">
   <button onclick="startCamera()" class="scan-btn">
     📷 Scan My Fridge
   </button>
 </div>
 
-<div class="featured">
-  <img src="https://source.unsplash.com/600x400/?food">
+<!-- 🌟 FEATURED -->
+<section class="featured">
+  <img src="https://source.unsplash.com/600x400/?food" alt="Featured Food">
   <div class="overlay">25 min • Easy</div>
-</div>
+</section>
 
-<div id="recipes" class="grid"></div>
+<!-- 📦 RECIPES -->
+<main id="recipes" class="grid"></main>
 
-<!-- RECIPE POPUP -->
+<!-- 📖 RECIPE POPUP -->
 <div id="popup" class="popup hidden"></div>
 
-<!-- SCANNER POPUP -->
+<!-- 🔍 SCANNER POPUP -->
 <div id="scanner" class="popup hidden"></div>
 
-<!-- MUSIC -->
+<!-- 🎵 MUSIC PLAYER -->
 <div class="music-player">
-  <span id="musicText">🎵 Cooking Jazz</span>
+  <span>🎵 Cooking Jazz</span>
   <button onclick="toggleMusic()">⏸</button>
 </div>
 
+<!-- 📱 BOTTOM NAV -->
 <nav class="bottom-nav">
   <button onclick="loadRecipes()">🏠</button>
   <button onclick="document.getElementById('search').focus()">🔍</button>
@@ -54,6 +64,7 @@
   <button onclick="showFavorites()">❤️</button>
 </nav>
 
+<!-- SCRIPT -->
 <script src="script.js"></script>
 
 </body>
