@@ -16,7 +16,6 @@
     <h3>Hey, Chef 👋</h3>
     <p class="sub">What are we cooking today?</p>
   </div>
-  <button onclick="toggleTheme()">⚙️</button>
 </header>
 
 <input type="text" id="search" placeholder="Search recipes..." />
@@ -30,15 +29,23 @@
 </div>
 
 <div class="featured">
-  <img src="https://source.unsplash.com/600x400/?pizza">
+  <img src="https://source.unsplash.com/600x400/?food">
   <div class="overlay">25 min • Easy</div>
 </div>
 
 <div id="recipes" class="grid"></div>
 
+<!-- RECIPE POPUP -->
 <div id="popup" class="popup hidden"></div>
 
-<div class="music-player">🎵 Cooking Jazz - Playing...</div>
+<!-- SCANNER POPUP -->
+<div id="scanner" class="popup hidden"></div>
+
+<!-- MUSIC -->
+<div class="music-player">
+  <span id="musicText">🎵 Cooking Jazz</span>
+  <button onclick="toggleMusic()">⏸</button>
+</div>
 
 <nav class="bottom-nav">
   <button onclick="loadRecipes()">🏠</button>
