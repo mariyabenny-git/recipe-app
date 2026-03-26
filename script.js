@@ -19,16 +19,24 @@ function loadRecipes(filter = "") {
   );
 
   filtered.forEach(r => {
+    let card = document.createElement("div");
+    card.className = "card";
+
     card.innerHTML = `
-  <img src="${r.image}" 
-       onerror="this.src='https://via.placeholder.com/300x200?text=Food'" />
+      <img src="${r.image}" 
+           onerror="this.src='https://via.placeholder.com/300x200?text=Food'" />
 
-  <div class="heart" onclick="toggleFav('${r.name}', event)">
-    ${favorites.includes(r.name) ? "❤️" : "🤍"}
-  </div>
+      <div class="heart" onclick="toggleFav('${r.name}', event)">
+        ${favorites.includes(r.name) ? "❤️" : "🤍"}
+      </div>
 
-  <h4>${r.name || "Recipe"}</h4>
-`;);
+      <h4>${r.name || "Recipe"}</h4>
+    `;
+
+    card.onclick = () => showRecipe(r.name);
+
+    container.appendChild(card);
+  });
 }
 
 function showRecipe(name) {
@@ -38,10 +46,13 @@ function showRecipe(name) {
   popup.innerHTML = `
     <h2>${r.name}</h2>
     <img src="${r.image}" style="width:100%;border-radius:10px;">
+    
     <h3>Ingredients</h3>
     <p>${r.ingredients.join(", ")}</p>
+    
     <h3>Steps</h3>
     <p>${r.steps}</p>
+
     <button onclick="closePopup()">Close</button>
   `;
 
@@ -69,14 +80,20 @@ function showFavorites() {
   let container = document.getElementById("recipes");
   container.innerHTML = "";
 
-  data.filter(r => favorites.includes(r.name))
+  data
+    .filter(r => favorites.includes(r.name))
     .forEach(r => {
-      container.innerHTML += `
-        <div class="card" onclick="showRecipe('${r.name}')">
-          <img src="${r.image}">
-          <h4>${r.name}</h4>
-        </div>
+      let card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${r.image}">
+        <h4>${r.name}</h4>
       `;
+
+      card.onclick = () => showRecipe(r.name);
+
+      container.appendChild(card);
     });
 }
 
@@ -88,13 +105,17 @@ function loadChips() {
   let cats = [...new Set(data.map(r => r.category))];
   let chips = document.getElementById("chips");
 
+  chips.innerHTML = "";
+
   cats.forEach(c => {
     let btn = document.createElement("button");
     btn.innerText = c;
+
     btn.onclick = () => {
       let filtered = data.filter(r => r.category === c);
       display(filtered);
     };
+
     chips.appendChild(btn);
   });
 }
@@ -104,12 +125,17 @@ function display(arr) {
   container.innerHTML = "";
 
   arr.forEach(r => {
-    container.innerHTML += `
-      <div class="card" onclick="showRecipe('${r.name}')">
-        <img src="${r.image}">
-        <h4>${r.name}</h4>
-      </div>
+    let card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${r.image}">
+      <h4>${r.name}</h4>
     `;
+
+    card.onclick = () => showRecipe(r.name);
+
+    container.appendChild(card);
   });
 }
 
@@ -132,7 +158,7 @@ function startCamera() {
     .then(stream => {
       video.srcObject = stream;
     })
-    .catch(err => {
+    .catch(() => {
       alert("Camera not working");
     });
 }
