@@ -6,12 +6,7 @@
   <title>Eco-Chef AI</title>
 
   <link rel="stylesheet" href="style.css">
-
-  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- ICONS -->
-  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
@@ -35,31 +30,20 @@
 
 <!-- MUSIC -->
 <div class="music-player">
-  <span>🎵 Relax Mode</span>
-  <button onclick="toggleMusic()">▶️</button>
+  <span>🎵 Relax Cooking Mode</span>
+  <button onclick="toggleMusic()" id="musicBtn">▶️</button>
 </div>
 
 <audio id="music" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_115b9b0c8c.mp3">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5d3b8c4d0d.mp3">
 </audio>
 
 <!-- NAV -->
 <nav class="bottom-nav">
-  <button onclick="goHome(); setActive('homeBtn')" id="homeBtn">
-    <i data-lucide="home"></i>
-  </button>
-
-  <button onclick="document.getElementById('search').focus(); setActive('searchBtn')" id="searchBtn">
-    <i data-lucide="search"></i>
-  </button>
-
-  <button onclick="startCamera(); setActive('cameraBtn')" id="cameraBtn">
-    <i data-lucide="camera"></i>
-  </button>
-
-  <button onclick="showFavorites(); setActive('favBtn')" id="favBtn">
-    <i data-lucide="heart"></i>
-  </button>
+  <button onclick="goHome()">🏠</button>
+  <button onclick="document.getElementById('search').focus()">🔍</button>
+  <button onclick="openScanner()">📷</button>
+  <button onclick="showFavorites()">❤️</button>
 </nav>
 
 <script src="script.js"></script>
