@@ -12,7 +12,7 @@ fetch("recipes.json")
     lucide.createIcons();
   });
 
-/* RECIPES */
+/* LOAD RECIPES */
 function loadRecipes(filter = "") {
   let container = document.getElementById("recipes");
   container.innerHTML = "";
@@ -30,7 +30,6 @@ function loadRecipes(filter = "") {
         ${favorites.includes(r.name) ? "❤️" : "🤍"}
       </div>
       <h4>${r.name}</h4>
-      <p>⏱️ ${r.time}</p>
     `;
 
     card.onclick = () => showRecipe(r.name);
@@ -38,7 +37,7 @@ function loadRecipes(filter = "") {
   });
 }
 
-/* SHOW */
+/* SHOW RECIPE */
 function showRecipe(name) {
   let r = data.find(x => x.name === name);
   let popup = document.getElementById("popup");
@@ -46,13 +45,12 @@ function showRecipe(name) {
   popup.innerHTML = `
     <button class="close-btn" onclick="closePopup()">←</button>
     <h2>${r.name}</h2>
-    <p>⏱️ ${r.time}</p>
     <p><b>Ingredients:</b><br>${r.ingredients.join(", ")}</p>
     <p><b>Steps:</b><br>${r.steps}</p>
   `;
 
   popup.classList.remove("hidden");
-  history.pushState({}, "");
+  history.pushState({ page: "recipe" }, "");
 }
 
 /* CLOSE */
@@ -66,9 +64,11 @@ window.onpopstate = () => closePopup();
 function toggleFav(name, e) {
   e.stopPropagation();
 
-  favorites = favorites.includes(name)
-    ? favorites.filter(f => f !== name)
-    : [...favorites, name];
+  if (favorites.includes(name)) {
+    favorites = favorites.filter(f => f !== name);
+  } else {
+    favorites.push(name);
+  }
 
   localStorage.setItem("fav", JSON.stringify(favorites));
   loadRecipes();
@@ -76,7 +76,18 @@ function toggleFav(name, e) {
 
 /* FAVORITES VIEW */
 function showFavorites() {
-  display(data.filter(r => favorites.includes(r.name)));
+  let container = document.getElementById("recipes");
+  container.innerHTML = "";
+
+  data.filter(r => favorites.includes(r.name))
+    .forEach(r => {
+      container.innerHTML += `
+        <div class="card" onclick="showRecipe('${r.name}')">
+          <div class="heart">❤️</div>
+          <h4>${r.name}</h4>
+        </div>
+      `;
+    });
 }
 
 /* HOME */
@@ -91,15 +102,22 @@ document.getElementById("search").addEventListener("input", e => {
 
 /* CHIPS */
 function loadChips() {
+  let cats = [...new Set(data.map(r => r.category))];
   let chips = document.getElementById("chips");
+
   chips.innerHTML = "";
 
-  [...new Set(data.map(r => r.category))].forEach(c => {
+  cats.forEach(c => {
     let btn = document.createElement("button");
     btn.innerText = c;
-    btn.onclick = () => display(data.filter(r => r.category === c));
+    btn.onclick = () => filterCat(c);
     chips.appendChild(btn);
   });
+}
+
+function filterCat(cat) {
+  let filtered = data.filter(r => r.category === cat);
+  display(filtered);
 }
 
 function display(arr) {
@@ -110,7 +128,6 @@ function display(arr) {
     container.innerHTML += `
       <div class="card" onclick="showRecipe('${r.name}')">
         <h4>${r.name}</h4>
-        <p>⏱️ ${r.time}</p>
       </div>
     `;
   });
@@ -123,8 +140,8 @@ function startCamera() {
   scan.innerHTML = `
     <button class="close-btn" onclick="closeScanner()">←</button>
     <h3>Enter Ingredients</h3>
-    <input id="scanInput">
-    <button onclick="scanSearch()">Find</button>
+    <input id="scanInput" placeholder="rice egg milk">
+    <button onclick="scanSearch()">Find Recipes</button>
   `;
 
   scan.classList.remove("hidden");
@@ -134,40 +151,25 @@ function closeScanner() {
   document.getElementById("scanner").classList.add("hidden");
 }
 
+/* AI MATCH */
 function scanSearch() {
   let val = document.getElementById("scanInput").value.toLowerCase();
 
-  if (!val) return closeScanner();
+  if (!val) {
+    closeScanner();
+    return;
+  }
+
+  let inputs = val.split(" ");
 
   let result = data.filter(r =>
-    val.split(" ").some(i =>
-      r.ingredients.join(" ").toLowerCase().includes(i)
+    inputs.some(input =>
+      r.ingredients.join(" ").toLowerCase().includes(input)
     )
   );
 
   display(result);
   closeScanner();
-}
-
-/* TIMER */
-let timer, seconds = 0;
-
-function startTimer() {
-  if (timer) return;
-
-  timer = setInterval(() => {
-    seconds++;
-    let m = String(Math.floor(seconds / 60)).padStart(2, '0');
-    let s = String(seconds % 60).padStart(2, '0');
-    document.getElementById("timeDisplay").innerText = `${m}:${s}`;
-  }, 1000);
-}
-
-function resetTimer() {
-  clearInterval(timer);
-  timer = null;
-  seconds = 0;
-  document.getElementById("timeDisplay").innerText = "00:00";
 }
 
 /* MUSIC */
@@ -179,7 +181,9 @@ function toggleMusic() {
     audio.play().then(() => {
       isPlaying = true;
       btn.innerText = "⏸️";
-    }).catch(() => alert("Tap again 🔊"));
+    }).catch(() => {
+      alert("Tap again to enable sound 🔊");
+    });
   } else {
     audio.pause();
     isPlaying = false;
