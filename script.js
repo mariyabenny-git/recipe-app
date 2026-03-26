@@ -187,3 +187,4 @@ document.body.addEventListener("click", () => {
   const audio = document.getElementById("music");
   if (!isPlaying) audio.play().catch(()=>{});
 }, { once: true });
+lucide.createIcons();
