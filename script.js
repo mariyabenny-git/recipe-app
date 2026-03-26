@@ -1,97 +1,94 @@
-let recipes = [];
-let lang = "en";
-let current = [];
+let data = [];
+let favorites = JSON.parse(localStorage.getItem("fav")) || [];
 
-// LOAD
 fetch("recipes.json")
-.then(r => r.json())
-.then(data => {
-  recipes = data;
-  loadRecipes(recipes);
-  loadQuick();
-});
+  .then(res => res.json())
+  .then(res => {
+    data = res;
+    loadRecipes();
+    loadChips();
+  });
 
-// DISPLAY
-function loadRecipes(data) {
-  const c = document.getElementById("recipesContainer");
-  c.innerHTML = "";
+function loadRecipes(filter = "") {
+  let container = document.getElementById("recipes");
+  container.innerHTML = "";
 
-  data.forEach((r,i)=>{
-    c.innerHTML += `
-      <div class="card" onclick="openRecipe(${i})">
-        <img src="${r.image}">
-        <h3>${r.name[lang]}</h3>
+  let filtered = data.filter(r =>
+    r.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  filtered.forEach(r => {
+    let card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${r.image}">
+      <div class="heart" onclick="toggleFav('${r.name}', event)">
+        ${favorites.includes(r.name) ? "❤️" : "🤍"}
       </div>
+      <h4>${r.name}</h4>
     `;
+
+    container.appendChild(card);
   });
 }
 
-// QUICK
-function loadQuick() {
-  loadRecipes(recipes.filter(r => r.time <= 15));
+function toggleFav(name, e) {
+  e.stopPropagation();
+  if (favorites.includes(name)) {
+    favorites = favorites.filter(f => f !== name);
+  } else {
+    favorites.push(name);
+  }
+  localStorage.setItem("fav", JSON.stringify(favorites));
+  loadRecipes();
 }
 
-// FILTER
-function filterCat(cat){
-  loadRecipes(recipes.filter(r => r.category === cat));
+function showFavorites() {
+  let container = document.getElementById("recipes");
+  container.innerHTML = "";
+
+  data.filter(r => favorites.includes(r.name))
+    .forEach(r => {
+      container.innerHTML += `<div class="card">
+        <img src="${r.image}">
+        <h4>${r.name}</h4>
+      </div>`;
+    });
 }
 
-// PANTRY SCAN (SIMULATED AI)
-function scanPantry(){
-  let input = prompt("Enter ingredients you have:");
-  let items = input.toLowerCase().split(",");
+document.getElementById("search").addEventListener("input", (e) => {
+  loadRecipes(e.target.value);
+});
 
-  let result = recipes.filter(r =>
-    r.ingredients.en.some(i =>
-      items.some(x => i.toLowerCase().includes(x.trim()))
-    )
-  );
+function loadChips() {
+  let cats = [...new Set(data.map(r => r.category))];
+  let chips = document.getElementById("chips");
 
-  loadRecipes(result);
+  cats.forEach(c => {
+    let btn = document.createElement("button");
+    btn.innerText = c;
+    btn.onclick = () => {
+      loadRecipes();
+      let filtered = data.filter(r => r.category === c);
+      display(filtered);
+    };
+    chips.appendChild(btn);
+  });
 }
 
-// DETAIL + SCALING
-function openRecipe(i){
-  let r = recipes[i];
+function display(arr) {
+  let container = document.getElementById("recipes");
+  container.innerHTML = "";
 
-  document.getElementById("recipeDetail").innerHTML = `
-    <h2>${r.name[lang]}</h2>
-
-    <label>👥 Servings:
-      <input type="range" min="1" max="6" value="2" onchange="scale(${i}, this.value)">
-    </label>
-
-    <div id="ingredients"></div>
-
-    <h3>Steps</h3>
-    ${r.steps[lang].map((s,i)=> `<p>${i+1}. ${s}</p>`).join("")}
-  `;
-
-  scale(i,2);
-  showPage("recipeDetail");
+  arr.forEach(r => {
+    container.innerHTML += `<div class="card">
+      <img src="${r.image}">
+      <h4>${r.name}</h4>
+    </div>`;
+  });
 }
 
-// SCALE
-function scale(i, n){
-  let r = recipes[i];
-  document.getElementById("ingredients").innerHTML =
-    r.ingredients[lang].map(x=> `<p>${x} x${n}</p>`).join("");
-}
-
-// NAV
-function showPage(id){
-  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
-}
-
-// VOICE COOK MODE
-document.getElementById("cookMode").onclick = () => {
-  const speech = new SpeechSynthesisUtterance("Cooking mode activated");
-  speechSynthesis.speak(speech);
-};
-
-// LANGUAGE
-document.getElementById("langToggle").onclick = ()=>{
-  lang = lang === "en" ? "ml" : "en";
-  loadRecipes(recipes);
+document.getElementById("toggleDark").onclick = () => {
+  document.body.classList.toggle("dark");
 };
