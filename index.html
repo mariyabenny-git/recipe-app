@@ -1,46 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eco-Chef AI</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eco-Chef AI</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
 <header class="header">
-  <h1>🌱 Eco-Chef AI</h1>
-  <button id="langToggle">🌐</button>
+  <div>👋 Hi, Mariya</div>
+  <h2>Eco-Chef AI</h2>
+  <button id="toggleDark">🌙</button>
 </header>
 
-<section id="home" class="active">
+<input type="text" id="search" placeholder="Search recipes..." />
 
-  <!-- SCAN -->
-  <div class="scan-box">
-    <button onclick="scanPantry()">📸 Scan My Fridge</button>
-  </div>
+<div class="chips" id="chips"></div>
 
-  <!-- QUICK WINS -->
-  <h2>⚡ Quick Wins (15 min)</h2>
-  <div id="quickRecipes" class="card-grid"></div>
+<div id="recipes" class="grid"></div>
 
-  <!-- CATEGORY -->
-  <div class="categories">
-    <div onclick="filterCat('Main')">🍛</div>
-    <div onclick="filterCat('Dessert')">🍰</div>
-    <div onclick="filterCat('Juice')">🥤</div>
-  </div>
-
-  <!-- DAILY -->
-  <h2>✨ Daily Inspiration</h2>
-  <div id="recipesContainer" class="card-grid"></div>
-
-</section>
-
-<section id="recipeDetail"></section>
-
-<button id="cookMode">🎤 Cook Mode</button>
+<nav class="bottom-nav">
+  <button onclick="loadRecipes()">🏠</button>
+  <button onclick="showFavorites()">❤️</button>
+  <button onclick="alert('Scan Coming Soon')">📷</button>
+</nav>
 
 <script src="script.js"></script>
 </body>
